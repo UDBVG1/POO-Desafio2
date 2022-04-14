@@ -34,6 +34,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `POO`.`Escrito` (
   `idEscrito` INT NOT NULL AUTO_INCREMENT,
+  `tipo` VARCHAR(3) NULL,
   `Material_codigo` INT NOT NULL,
   PRIMARY KEY (`idEscrito`, `Material_codigo`),
   INDEX `fk_Escrito_Material1_idx` (`Material_codigo` ASC),
@@ -92,6 +93,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `POO`.`AudioVisual` (
   `idAudioVisual` INT NOT NULL,
+  `tipo` VARCHAR(3) NULL,
   `Material_codigo` INT NOT NULL,
   PRIMARY KEY (`idAudioVisual`, `Material_codigo`),
   INDEX `fk_AudioVisual_Material1_idx` (`Material_codigo` ASC),
