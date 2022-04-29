@@ -42,15 +42,7 @@ public class ObjetoLibro {
     public void setPaginas(int paginas) {
         this.paginas = paginas;
     }
-
-    public int getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(int tipo) {
-        this.tipo = tipo;
-    }
-
+    
     public String getCode() {
         return code;
     }
@@ -59,10 +51,17 @@ public class ObjetoLibro {
         this.code = code;
     }
 
+    public int getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
     
     @Override
     public String toString() {
-        return "ObjetoLibro{" + "titulo= " + titulo + ", autor= " + autor + ", edit= " + edit + ", paginas= " + paginas + ", tipo= " + tipo + ", code= " + code + '}';
+        return "ObjetoLibro{" + "titulo= " + titulo + ", autor= " + autor + ", edit= " + edit + ", paginas= " + paginas + ", code= " + code + ", tipo= " + tipo + '}';
     }
    
 

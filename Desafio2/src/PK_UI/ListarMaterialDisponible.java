@@ -5,6 +5,8 @@
  */
 package PK_UI;
 
+import PK_Repositorios.CRUD;
+
 /**
  *
  * @author amgoo
@@ -14,8 +16,10 @@ public class ListarMaterialDisponible extends javax.swing.JPanel {
     /**
      * Creates new form ListarMaterialDisponible
      */
+    private final CRUD select=new CRUD();
     public ListarMaterialDisponible() {
         initComponents();
+        jDisponibilidad.setModel(select.selectall());
     }
 
     /**

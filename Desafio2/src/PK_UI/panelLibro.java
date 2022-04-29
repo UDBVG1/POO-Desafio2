@@ -214,8 +214,6 @@ public class panelLibro extends javax.swing.JPanel {
         paginas = Integer.parseInt(jTextPag.getText());
         Setlibro.setPaginas(paginas);
 
-
-        List<ObjetoLibro> materialLB = new ArrayList<ObjetoLibro>();
         jMostrar.setModel(insertarLibro.select(Setlibro));
 
       
