@@ -46,6 +46,7 @@ public class Desafio2Frame extends javax.swing.JFrame {
         contenedor = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -94,6 +95,10 @@ public class Desafio2Frame extends javax.swing.JFrame {
             }
         });
 
+        contenedor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        contenedor.setMaximumSize(new java.awt.Dimension(0, 0));
+        contenedor.setPreferredSize(new java.awt.Dimension(0, 0));
+
         javax.swing.GroupLayout contenedorLayout = new javax.swing.GroupLayout(contenedor);
         contenedor.setLayout(contenedorLayout);
         contenedorLayout.setHorizontalGroup(
@@ -102,7 +107,7 @@ public class Desafio2Frame extends javax.swing.JFrame {
         );
         contenedorLayout.setVerticalGroup(
             contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 348, Short.MAX_VALUE)
+            .addGap(0, 450, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout principalLayout = new javax.swing.GroupLayout(principal);
@@ -121,15 +126,15 @@ public class Desafio2Frame extends javax.swing.JFrame {
                         .addComponent(agregarMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         principalLayout.setVerticalGroup(
             principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(principalLayout.createSequentialGroup()
-                .addGroup(principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(principalLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
                         .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(agregarMaterial)
@@ -141,12 +146,10 @@ public class Desafio2Frame extends javax.swing.JFrame {
                         .addComponent(borrarMaterial)
                         .addGap(11, 11, 11)
                         .addComponent(buscarMaterial)
-                        .addGap(79, 79, 79)
+                        .addGap(203, 203, 203)
                         .addComponent(salir))
-                    .addGroup(principalLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(49, 49, 49))
+                    .addComponent(contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -199,7 +202,7 @@ public class Desafio2Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_salirActionPerformed
     
     private void ShowOption(JPanel p){
-        p.setSize(440, 348);
+        p.setSize(440, 450);
         p.setLocation(0,0);
         
         contenedor.removeAll();

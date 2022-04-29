@@ -11,6 +11,66 @@ package PK_UI;
  */
 public class BuscarMaterial extends javax.swing.JPanel {
 
+    PK_UI.panelLibro libro;
+    PK_UI.panelCd CD;
+    PK_UI.panelRevista revista;
+    PK_UI.panelDvd DVD;
+    public String vp1 = "0";
+    public String vp2 = "0";
+    public String vp3 = "0";
+    public String vp4 = "0";
+    
+      private void abrir_Plibro(){
+        if(vp1.equals("0")){
+        libro = new PK_UI.panelLibro();
+        jTabbedPane1.addTab("Agregar Libro", libro);
+        jTabbedPane1.setSelectedComponent(libro);
+        }
+        else{
+            jTabbedPane1.setSelectedComponent(libro);
+        }
+        vp1 = "1"; //para que si vuelve a entrar que solo selecciones por que vp1 cambio a 1
+}
+    
+    private void abrir_Prevista(){
+        
+        if(vp2.equals("0")){
+        revista = new PK_UI.panelRevista();
+        jTabbedPane1.addTab("Agregar Revista",revista );
+        jTabbedPane1.setSelectedComponent(revista);
+        }
+        else{
+            jTabbedPane1.setSelectedComponent(revista);
+        }
+        vp2 = "1"; //para que si vuelve a entrar que solo selecciones por que vp1 cambio a 1
+}
+    
+    private void abrir_PCD(){
+        
+        if(vp3.equals("0")){
+        CD = new PK_UI.panelCd();
+        jTabbedPane1.addTab("Agregar un CD",CD );
+        jTabbedPane1.setSelectedComponent(CD);
+        }
+        else{
+            jTabbedPane1.setSelectedComponent(CD);
+        }
+        vp3 = "1"; //para que si vuelve a entrar que solo selecciones por que vp1 cambio a 1
+}
+    
+    private void abrir_PDVD(){
+        
+        if(vp4.equals("0")){
+        DVD = new PK_UI.panelDvd();
+        jTabbedPane1.addTab("Agregar un DVD",DVD );
+        jTabbedPane1.setSelectedComponent(DVD);
+        }
+        else{
+            jTabbedPane1.setSelectedComponent(DVD);
+        }
+        vp4 = "1"; //para que si vuelve a entrar que solo selecciones por que vp1 cambio a 1
+}
+
     /**
      * Creates new form BuscarMaterial
      */
@@ -27,8 +87,59 @@ public class BuscarMaterial extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        librobtn = new javax.swing.JButton();
+        revistaBtn = new javax.swing.JButton();
+        cdBtn = new javax.swing.JButton();
+        dvdBtn = new javax.swing.JButton();
+        jTabbedPane3 = new javax.swing.JTabbedPane();
+
+        jButton5.setText("Libro");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setText("Revista");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText(" CD de audio");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jButton8.setText("DVD");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jButton9.setText("Libro");
+
+        jButton10.setText("Revista");
+
+        jButton11.setText(" CD de audio");
+
+        jButton12.setText("DVD");
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -38,6 +149,34 @@ public class BuscarMaterial extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Buscar Material");
 
+        librobtn.setText("Libro");
+        librobtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                librobtnActionPerformed(evt);
+            }
+        });
+
+        revistaBtn.setText("Revista");
+        revistaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                revistaBtnActionPerformed(evt);
+            }
+        });
+
+        cdBtn.setText("CD");
+        cdBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cdBtnActionPerformed(evt);
+            }
+        });
+
+        dvdBtn.setText("DVD");
+        dvdBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dvdBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -46,21 +185,90 @@ public class BuscarMaterial extends javax.swing.JPanel {
                 .addGap(152, 152, 152)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(152, 152, 152))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTabbedPane3)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(librobtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(revistaBtn)
+                        .addGap(43, 43, 43)
+                        .addComponent(cdBtn)
+                        .addGap(39, 39, 39)
+                        .addComponent(dvdBtn)
+                        .addGap(56, 56, 56))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(320, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(librobtn)
+                    .addComponent(revistaBtn)
+                    .addComponent(cdBtn)
+                    .addComponent(dvdBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE))
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 350));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        abrir_Plibro();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        abrir_Prevista();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        abrir_PCD();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        abrir_PDVD();
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void librobtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_librobtnActionPerformed
+           abrir_Plibro();
+    }//GEN-LAST:event_librobtnActionPerformed
+
+    private void revistaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_revistaBtnActionPerformed
+         abrir_Prevista();
+    }//GEN-LAST:event_revistaBtnActionPerformed
+
+    private void cdBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdBtnActionPerformed
+         abrir_PCD();
+    }//GEN-LAST:event_cdBtnActionPerformed
+
+    private void dvdBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dvdBtnActionPerformed
+        abrir_PDVD();
+    }//GEN-LAST:event_dvdBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cdBtn;
+    private javax.swing.JButton dvdBtn;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JButton librobtn;
+    private javax.swing.JButton revistaBtn;
     // End of variables declaration//GEN-END:variables
 }

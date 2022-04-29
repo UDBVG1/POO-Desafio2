@@ -7,14 +7,19 @@ package PK_UI;
 
 import PK_Repositorios.CRUD;
 import PK_Modelos.ObjetoLibro;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author admin
  */
 public class panelLibro extends javax.swing.JPanel {
+
     private final CRUD insertarLibro;
     private final ObjetoLibro Setlibro;
+
     /**
      * Creates new form PanelLibro
      */
@@ -34,6 +39,7 @@ public class panelLibro extends javax.swing.JPanel {
     private void initComponents() {
 
         buttonGroupTipo = new javax.swing.ButtonGroup();
+        jPanel1 = new javax.swing.JPanel();
         AgregarDatos = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTextAutor = new javax.swing.JTextField();
@@ -45,6 +51,22 @@ public class panelLibro extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jTextTitulo = new javax.swing.JTextField();
+        buscarBtn = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jTextCantD = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Mostrar = new javax.swing.JTable();
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         AgregarDatos.setText("Agregar");
         AgregarDatos.addActionListener(new java.awt.event.ActionListener() {
@@ -59,9 +81,37 @@ public class panelLibro extends javax.swing.JPanel {
 
         jLabel3.setText("Numero de paginas:");
 
+        jTextCod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextCodActionPerformed(evt);
+            }
+        });
+
         jLabel4.setText("Codigo ISBN:");
 
         jLabel6.setText("Titulo:");
+
+        buscarBtn.setText("Buscar");
+        buscarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Cantidad disponible:");
+
+        Mostrar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(Mostrar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -72,27 +122,29 @@ public class panelLibro extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextEdit)
-                    .addComponent(jTextCod)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel6)
+                    .addComponent(AgregarDatos)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextPag, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextEdit, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextCod)
+                    .addComponent(jTextTitulo)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 33, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextPag, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextTitulo))
-                            .addComponent(jTextAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextCantD, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(buscarBtn)))
+                    .addComponent(jTextAutor))
                 .addGap(25, 25, 25))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AgregarDatos)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,51 +157,92 @@ public class panelLibro extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel4))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
                     .addComponent(jTextTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(AgregarDatos)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5)
+                        .addComponent(jTextCantD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buscarBtn)
+                    .addComponent(AgregarDatos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgregarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarDatosActionPerformed
-       //variables
-        int  paginas;
-        System.out.println(Setlibro.toString());
+        //variables
+        int paginas;
+
         Setlibro.setTipo(1);
         Setlibro.setAutor(jTextAutor.getText());
         Setlibro.setEdit(jTextEdit.getText());
         Setlibro.setTitulo(jTextTitulo.getText());
         Setlibro.setCode(jTextCod.getText());
-        
-        paginas =  Integer.parseInt(jTextPag.getText());
+
+        paginas = Integer.parseInt(jTextPag.getText());
         Setlibro.setPaginas(paginas);
-        
-        System.out.println(Setlibro.toString());
-        
-        int row = insertarLibro.insertarDatos(Setlibro);
-        System.out.println(row);   
+
+
+        insertarLibro.insertarDatos(Setlibro);
     }//GEN-LAST:event_AgregarDatosActionPerformed
+
+    private void buscarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBtnActionPerformed
+        int paginas;
+
+        Setlibro.setTipo(1);
+        Setlibro.setAutor(jTextAutor.getText());
+        Setlibro.setEdit(jTextEdit.getText());
+        Setlibro.setTitulo(jTextTitulo.getText());
+        Setlibro.setCode(jTextCod.getText());
+
+        paginas = Integer.parseInt(jTextPag.getText());
+        Setlibro.setPaginas(paginas);
+
+
+        List<ObjetoLibro> materialLB = new ArrayList<ObjetoLibro>();
+        Mostrar.setModel(insertarLibro.select(Setlibro));
+
+      
+
+
+    }//GEN-LAST:event_buscarBtnActionPerformed
+
+    private void jTextCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCodActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextCodActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarDatos;
+    private javax.swing.JTable Mostrar;
+    private javax.swing.JButton buscarBtn;
     private javax.swing.ButtonGroup buttonGroupTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextAutor;
+    private javax.swing.JTextField jTextCantD;
     private javax.swing.JTextField jTextCod;
     private javax.swing.JTextField jTextEdit;
     private javax.swing.JTextField jTextPag;
