@@ -55,7 +55,7 @@ public class panelLibro extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jTextCantD = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Mostrar = new javax.swing.JTable();
+        jMostrar = new javax.swing.JTable();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -100,7 +100,7 @@ public class panelLibro extends javax.swing.JPanel {
 
         jLabel5.setText("Cantidad disponible:");
 
-        Mostrar.setModel(new javax.swing.table.DefaultTableModel(
+        jMostrar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -111,7 +111,7 @@ public class panelLibro extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(Mostrar);
+        jScrollPane1.setViewportView(jMostrar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -216,7 +216,7 @@ public class panelLibro extends javax.swing.JPanel {
 
 
         List<ObjetoLibro> materialLB = new ArrayList<ObjetoLibro>();
-        Mostrar.setModel(insertarLibro.select(Setlibro));
+        jMostrar.setModel(insertarLibro.select(Setlibro));
 
       
 
@@ -230,7 +230,6 @@ public class panelLibro extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarDatos;
-    private javax.swing.JTable Mostrar;
     private javax.swing.JButton buscarBtn;
     private javax.swing.ButtonGroup buttonGroupTipo;
     private javax.swing.JLabel jLabel1;
@@ -239,6 +238,7 @@ public class panelLibro extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JTable jMostrar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextAutor;

@@ -41,16 +41,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="titulo" min="-2" pref="117" max="-2" attributes="0"/>
-                          <Component id="buscarMaterial" alignment="0" max="32767" attributes="0"/>
-                          <Component id="borrarMaterial" alignment="0" max="32767" attributes="0"/>
-                          <Component id="listarDisponible" alignment="0" max="32767" attributes="0"/>
-                          <Component id="modificarMaterial" alignment="0" pref="122" max="32767" attributes="0"/>
-                          <Component id="agregarMaterial" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Component id="salir" min="-2" pref="122" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="salir" max="32767" attributes="0"/>
+                      <Component id="buscarMaterial" alignment="0" max="32767" attributes="0"/>
+                      <Component id="borrarMaterial" max="32767" attributes="0"/>
+                      <Component id="listarDisponible" alignment="0" max="32767" attributes="0"/>
+                      <Component id="modificarMaterial" max="32767" attributes="0"/>
+                      <Component id="agregarMaterial" alignment="0" max="32767" attributes="0"/>
+                      <Component id="titulo" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="contenedor" min="-2" pref="440" max="-2" attributes="0"/>
@@ -61,21 +59,21 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="titulo" min="-2" pref="48" max="-2" attributes="0"/>
-                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                           <Component id="agregarMaterial" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="modificarMaterial" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="listarDisponible" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="borrarMaterial" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="buscarMaterial" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="174" max="-2" attributes="0"/>
                           <Component id="salir" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="contenedor" min="-2" pref="450" max="-2" attributes="0"/>
@@ -89,10 +87,10 @@
         <Component class="javax.swing.JLabel" name="titulo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="24" style="0"/>
+              <Font name="Arial Black" size="24" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Mediateca"/>
+            <Property name="text" type="java.lang.String" value="MEDIATECA"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="agregarMaterial">

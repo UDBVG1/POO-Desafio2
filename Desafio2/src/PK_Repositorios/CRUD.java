@@ -95,22 +95,6 @@ public class CRUD {
                     fila[i]=rs.getObject(i+1);
                     }
                     dtm.addRow(fila);
-//                    titulo = rs.getString(1);
-//                    autor = rs.getString(2);
-//                    paginas = rs.getInt(3);
-//                    edit = rs.getString(4);
-//                    tipo = rs.getInt(5);
-//                    code = rs.getString(6);
-//
-//                   // materialLb = new ObjetoLibro();
-//                    libro.setTitulo(titulo);
-//                    libro.setAutor(autor);
-//                    libro.setPaginas(paginas);
-//                    libro.setEdit(edit);
-//                    libro.setTipo(tipo);
-//                    libro.setCode(code);
-//                    materialLB.add(libro);
-               // }
             }
         } catch (SQLException e) {
             e.printStackTrace();

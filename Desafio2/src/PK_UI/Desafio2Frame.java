@@ -48,9 +48,9 @@ public class Desafio2Frame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        titulo.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo.setText("Mediateca");
+        titulo.setText("MEDIATECA");
 
         agregarMaterial.setText("Agregar Material");
         agregarMaterial.addActionListener(new java.awt.event.ActionListener() {
@@ -116,15 +116,14 @@ public class Desafio2Frame extends javax.swing.JFrame {
             principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(principalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(buscarMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(borrarMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(listarDisponible, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(modificarMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                        .addComponent(agregarMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buscarMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(borrarMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(listarDisponible, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(modificarMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(agregarMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -132,21 +131,21 @@ public class Desafio2Frame extends javax.swing.JFrame {
         principalLayout.setVerticalGroup(
             principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(principalLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(13, 13, 13)
                 .addGroup(principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(principalLayout.createSequentialGroup()
                         .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
+                        .addGap(7, 7, 7)
                         .addComponent(agregarMaterial)
-                        .addGap(11, 11, 11)
+                        .addGap(18, 18, 18)
                         .addComponent(modificarMaterial)
-                        .addGap(11, 11, 11)
+                        .addGap(18, 18, 18)
                         .addComponent(listarDisponible)
-                        .addGap(11, 11, 11)
+                        .addGap(18, 18, 18)
                         .addComponent(borrarMaterial)
-                        .addGap(11, 11, 11)
+                        .addGap(18, 18, 18)
                         .addComponent(buscarMaterial)
-                        .addGap(203, 203, 203)
+                        .addGap(174, 174, 174)
                         .addComponent(salir))
                     .addComponent(contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
