@@ -73,7 +73,7 @@
                           <Component id="borrarMaterial" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="buscarMaterial" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="174" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="177" max="-2" attributes="0"/>
                           <Component id="salir" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="contenedor" min="-2" pref="450" max="-2" attributes="0"/>

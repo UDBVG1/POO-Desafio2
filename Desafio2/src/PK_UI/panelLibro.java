@@ -41,7 +41,7 @@ public class panelLibro extends javax.swing.JPanel {
             jTextPag.setVisible(false);
             jLabel3.setVisible(false);
         }
-        modificarDatos.enable(false);
+        modificarDatos.setEnabled(false);
     }
     
     /**
@@ -99,12 +99,6 @@ public class panelLibro extends javax.swing.JPanel {
 
         jLabel3.setText("Numero de paginas:");
 
-        jTextCod.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextCodActionPerformed(evt);
-            }
-        });
-
         jLabel4.setText("Codigo ISBN:");
 
         jLabel6.setText("Titulo:");
@@ -131,11 +125,6 @@ public class panelLibro extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jMostrar);
 
-        jTextCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextCodigoActionPerformed(evt);
-            }
-        });
         jTextCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextCodigoKeyPressed(evt);
@@ -282,10 +271,6 @@ public class panelLibro extends javax.swing.JPanel {
 
     }//GEN-LAST:event_buscarDatosActionPerformed
 
-    private void jTextCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCodActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextCodActionPerformed
-
     private void jTextCodigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextCodigoKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
             //metodoselectModificar
@@ -295,29 +280,38 @@ public class panelLibro extends javax.swing.JPanel {
             jTextTitulo.setText(libromod.titulo);
             jTextCod.setText(libromod.code);
             jTextPag.setText(String.valueOf(libromod.paginas));
-            
+            jTextCantT.setText(String.valueOf(insertarLibro.selectCant()));
+            modificarDatos.setEnabled(true);
         }
     }//GEN-LAST:event_jTextCodigoKeyPressed
 
     private void modificarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarDatosActionPerformed
         // TODO add your handling code here:
-        int paginas;
+        int cantT;
 
         Setlibro.setTipo(1);
         Setlibro.setAutor(jTextAutor.getText());
         Setlibro.setEdit(jTextEdit.getText());
         Setlibro.setTitulo(jTextTitulo.getText());
         Setlibro.setCode(jTextCod.getText());
-        paginas = Integer.parseInt(jTextPag.getText());
-        Setlibro.setPaginas(paginas);
+        Setlibro.setPaginas(Integer.parseInt(jTextPag.getText()));
+        
+        cantT = Integer.parseInt(jTextCantT.getText());
         
         insertarLibro.updateDatos(Setlibro);
+        insertarLibro.updateMaterial(cantT, jTextCodigo.getText());
+        clear();
+        modificarDatos.setEnabled(false);
     }//GEN-LAST:event_modificarDatosActionPerformed
-
-    private void jTextCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextCodigoActionPerformed
-
+    private void clear(){
+        jTextCodigo.setText("");
+        jTextAutor.setText("");
+        jTextEdit.setText("");
+        jTextTitulo.setText("");
+        jTextCod.setText("");
+        jTextPag.setText("");
+        jTextCantT.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregarDatos;
