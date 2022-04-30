@@ -10,7 +10,7 @@ package PK_Utilidades;
  * @author amgoo
  */
 public class Opciones {
-    public static boolean opcionAgregar = false;
-    public static boolean opcionModificar = false;
-    public static boolean opcionBuscar = false;
+    public static boolean opcionAgregar;
+    public static boolean opcionModificar;
+    public static boolean opcionBuscar;
 }
