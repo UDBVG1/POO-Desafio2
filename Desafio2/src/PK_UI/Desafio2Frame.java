@@ -10,6 +10,7 @@ package PK_UI;
 import java.awt.BorderLayout;
 import java.sql.SQLException;
 import javax.swing.JPanel;
+import PK_Utilidades.Opciones;
 
 /**
  *
@@ -169,12 +170,18 @@ public class Desafio2Frame extends javax.swing.JFrame {
         // TODO add your handling code here:
         AgregarMaterial opcionAgregar = new AgregarMaterial();
         ShowOption(opcionAgregar);
+        Opciones.opcionAgregar = true;
+        Opciones.opcionBuscar= false;
+        Opciones.opcionModificar= false;
     }//GEN-LAST:event_agregarMaterialActionPerformed
 
     private void modificarMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarMaterialActionPerformed
         // TODO add your handling code here:
         ModificarMaterial opcionModificar = new ModificarMaterial();
         ShowOption(opcionModificar);
+        Opciones.opcionAgregar = false;
+        Opciones.opcionBuscar= false;
+        Opciones.opcionModificar= true;
     }//GEN-LAST:event_modificarMaterialActionPerformed
 
     private void listarDisponibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarDisponibleActionPerformed
@@ -193,6 +200,9 @@ public class Desafio2Frame extends javax.swing.JFrame {
         // TODO add your handling code here:
         BuscarMaterial opcionBuscar = new BuscarMaterial();
         ShowOption(opcionBuscar);
+        Opciones.opcionAgregar = false;
+        Opciones.opcionBuscar= true;
+        Opciones.opcionModificar= false;
     }//GEN-LAST:event_buscarMaterialActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
