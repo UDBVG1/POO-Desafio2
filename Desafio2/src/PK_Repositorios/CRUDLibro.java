@@ -14,8 +14,6 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  * @author admin
  */
 public class CRUDLibro {
-
+    private int id=0;
     private final String SQL_INSERTLIRBOS = "insert into libros(Titulo, autor, num_pag,editorial, ISBN, idEscrito) values(?,?,?,?,?,?);";
     private final String SQL_SELECTLIBROS = "SELECT titulo,autor,num_pag,editorial,isbn from libros where titulo like ? or autor like ? or editorial like ? or isbn like ?;";
     private final String SQL_SELECTDSIPONIBILIDAD = "SELECT 	m.codigo,case when m.idlibros is not null then l.titulo\n" +
@@ -37,13 +35,14 @@ public class CRUDLibro {
                                                     "LEFT join revista r on m.idrevistas=r.idrevistas\n" +
                                                     "LEFT join m_cd mc on m.idm_cd=mc.idm_cd\n" +
                                                     "LEFT join m_dvd md on m.idm_dvd=md.idm_dvd;";
-        private final String SQL_SELECTRN = "select count(*) from material where codigo = ?;"; //buscar si no esta repetido el id
-        private final String SQL_INSERTM = "insert into material (codigo,cantidad_total,cantidad_disponible,idlibros) values(?,?,?,?);";//insertar a la tabla matrial para libro
-        private final String SQL_SELECTID = "SELECT titulo,autor,num_pag,editorial,isbn from libros l\n" +
-                                            "inner join material m ON l.idlibros =m.idlibros\n" +
-                                            "where codigo= ?";
-        private final String SQL_UPDATETLIRBOS = "insert into libros(Titulo, autor, num_pag,editorial, ISBN, idEscrito) values(?,?,?,?,?,?);";
-        
+    private final String SQL_SELECTRN = "select count(*) from material where codigo = ?;"; //buscar si no esta repetido el id
+    private final String SQL_INSERTM = "insert into material (codigo,cantidad_total,cantidad_disponible,idlibros) values(?,?,?,?);";//insertar a la tabla matrial para libro
+    private final String SQL_SELECTID = "SELECT titulo,autor,num_pag,editorial,isbn,l.idlibros from libros l\n" +
+                                        "inner join material m ON l.idlibros =m.idlibros\n" +
+                                        "where codigo= ?";
+    private final String SQL_UPDATETLIRBOS = "update libros set titulo =?, autor =?, num_pag =? ,editorial =?, isbn =? where idlibros =?;";
+    private final String SQL_UPDATEMATERIAL = "";
+    
     public int insertarDatos(ObjetoLibro libro) {
         int rows = 0;
         int idLibro=0;
@@ -141,12 +140,7 @@ public class CRUDLibro {
     
     public DefaultTableModel select(ObjetoLibro libro){
         DefaultTableModel dtm = new DefaultTableModel();
-//        String titulo,autor;
-//        int paginas;
-//        String edit;
-//        int tipo;
-//        String code;
-        
+
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -182,7 +176,6 @@ public class CRUDLibro {
             ConeccionBD.closeResulset(rs);
         }
         return dtm;
-
     }
     
     public DefaultTableModel selectall(){
@@ -216,7 +209,6 @@ public class CRUDLibro {
             ConeccionBD.closeResulset(rs);
         }
         return dtm;
-
     }
     
     public ObjetoLibro selectId(String codigo) {
@@ -236,7 +228,8 @@ public class CRUDLibro {
                     libroMod.setAutor(rs.getObject(2).toString());
                     libroMod.setPaginas(Integer.parseInt(rs.getObject(3).toString()));
                     libroMod.setEdit(rs.getObject(4).toString());
-                    libroMod.setCode(rs.getObject(5).toString()); 
+                    libroMod.setCode(rs.getObject(5).toString());
+                    id=(Integer.parseInt(rs.getObject(6).toString()));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -248,9 +241,8 @@ public class CRUDLibro {
         return libroMod;
     }
     
-    public int ipdateDatos(ObjetoLibro libro) {
+    public int updateDatos(ObjetoLibro libro) {
         int rows = 0;
-        int idLibro=0;
         Connection conn = null;
         PreparedStatement stmt = null;
         try {
@@ -258,14 +250,14 @@ public class CRUDLibro {
             stmt = conn.prepareStatement(SQL_UPDATETLIRBOS);
             int index = 1;
             System.out.println(libro.toString());
-
+            
             stmt.setString(index++, libro.titulo);
             stmt.setString(index++, libro.autor);
             stmt.setInt(index++, libro.paginas);
             stmt.setString(index++, libro.edit);
             stmt.setString(index++, libro.code);
-            stmt.setInt(index, libro.tipo);
-
+            stmt.setInt(index, id);
+            System.out.println(id);
             rows = stmt.executeUpdate();
 
             if (rows > 0) {
@@ -280,4 +272,8 @@ public class CRUDLibro {
         
         return rows;
     }
+    
+    public void updateMaterial(int cantT, int cantD, String Cod){
+        
+    };
 }
