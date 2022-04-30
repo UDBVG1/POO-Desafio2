@@ -44,6 +44,7 @@ public class Desafio2Frame extends javax.swing.JFrame {
         borrarMaterial = new javax.swing.JButton();
         buscarMaterial = new javax.swing.JButton();
         salir = new javax.swing.JButton();
+        prestarMaterial = new javax.swing.JButton();
         contenedor = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -96,6 +97,14 @@ public class Desafio2Frame extends javax.swing.JFrame {
             }
         });
 
+        prestarMaterial.setText("Prestamos");
+        prestarMaterial.setActionCommand("Prestamos");
+        prestarMaterial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prestarMaterialActionPerformed(evt);
+            }
+        });
+
         contenedor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         contenedor.setMaximumSize(new java.awt.Dimension(0, 0));
         contenedor.setPreferredSize(new java.awt.Dimension(0, 0));
@@ -124,7 +133,8 @@ public class Desafio2Frame extends javax.swing.JFrame {
                     .addComponent(listarDisponible, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(modificarMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(agregarMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(prestarMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -146,11 +156,15 @@ public class Desafio2Frame extends javax.swing.JFrame {
                         .addComponent(borrarMaterial)
                         .addGap(18, 18, 18)
                         .addComponent(buscarMaterial)
-                        .addGap(174, 174, 174)
+                        .addGap(18, 18, 18)
+                        .addComponent(prestarMaterial)
+                        .addGap(134, 134, 134)
                         .addComponent(salir))
                     .addComponent(contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        prestarMaterial.getAccessibleContext().setAccessibleName("Prestamos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -209,6 +223,10 @@ public class Desafio2Frame extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_salirActionPerformed
+
+    private void prestarMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prestarMaterialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_prestarMaterialActionPerformed
     
     private void ShowOption(JPanel p){
         p.setSize(440, 450);
@@ -271,6 +289,7 @@ public class Desafio2Frame extends javax.swing.JFrame {
     private javax.swing.JPanel contenedor;
     private javax.swing.JButton listarDisponible;
     private javax.swing.JButton modificarMaterial;
+    private javax.swing.JButton prestarMaterial;
     private javax.swing.JPanel principal;
     private javax.swing.JButton salir;
     private javax.swing.JLabel titulo;
