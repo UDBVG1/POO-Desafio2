@@ -141,11 +141,6 @@ public class CRUDLibro {
     
     public DefaultTableModel select(ObjetoLibro libro){
         DefaultTableModel dtm = new DefaultTableModel();
-//        String titulo,autor;
-//        int paginas;
-//        String edit;
-//        int tipo;
-//        String code;
         
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -155,10 +150,10 @@ public class CRUDLibro {
             conn = ConeccionBD.getConexion();
             stmt = conn.prepareStatement(SQL_SELECTLIBROS);
             int index = 1;
-            stmt.setString(index++, "%"+libro.titulo+"%");
-            stmt.setString(index++, "%"+libro.autor+"%");
-            stmt.setString(index++, "%"+libro.edit+"%");
-            stmt.setString(index, "%"+libro.code+"%");
+            stmt.setString(index++, libro.titulo);
+            stmt.setString(index++, libro.autor);
+            stmt.setString(index++, libro.edit);
+            stmt.setString(index, libro.code);
             System.out.println("Ejecutando query:" + SQL_SELECTLIBROS);
             rs = stmt.executeQuery();
             ResultSetMetaData meta = rs.getMetaData();
@@ -166,6 +161,7 @@ public class CRUDLibro {
             for (int i = 1; i<= numberOfColumns; i++) {
             dtm.addColumn(meta.getColumnLabel(i));
             }
+            
             while (rs.next()) {
                     
                     Object[] fila = new Object[numberOfColumns];

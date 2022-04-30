@@ -31,7 +31,8 @@ public class panelLibro extends javax.swing.JPanel {
         jTextCodigo.setVisible(Opciones.opcionModificar);
         jLabel7.setVisible(Opciones.opcionModificar);
         buscarDatos.setVisible(Opciones.opcionBuscar);
-        modificarDatos.;
+        
+        
     }
     
     /**
@@ -166,9 +167,7 @@ public class panelLibro extends javax.swing.JPanel {
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jTextCantD, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(buscarDatos))))
+                            .addComponent(buscarDatos, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(152, 152, 152)
@@ -224,9 +223,8 @@ public class panelLibro extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buscarDatos)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(agregarDatos)
-                        .addComponent(modificarDatos)))
+                    .addComponent(modificarDatos)
+                    .addComponent(agregarDatos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -254,19 +252,20 @@ public class panelLibro extends javax.swing.JPanel {
         IDlibro =insertarLibro.insertarDatos(Setlibro);
         
         insertarLibro.insertmaterialdisponible(IDcantd,CantD, CantT, IDlibro);
+        
+
+        
     }//GEN-LAST:event_agregarDatosActionPerformed
 
     private void buscarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarDatosActionPerformed
-        int paginas;
+        String paginas;
 
-        Setlibro.setTipo(1);
+
         Setlibro.setAutor(jTextAutor.getText());
         Setlibro.setEdit(jTextEdit.getText());
         Setlibro.setTitulo(jTextTitulo.getText());
         Setlibro.setCode(jTextCod.getText());
 
-        paginas = Integer.parseInt(jTextPag.getText());
-        Setlibro.setPaginas(paginas);
 
         jMostrar.setModel(insertarLibro.select(Setlibro));
 

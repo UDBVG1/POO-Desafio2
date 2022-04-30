@@ -31,11 +31,14 @@ public String vp4="0";
         libro = new PK_UI.panelLibro();
         jTabbedPane4.addTab("Agregar Libro", libro);
         jTabbedPane4.setSelectedComponent(libro);
+        
         }
         else{
             jTabbedPane4.setSelectedComponent(libro);
+            
         }
         vp1 = "1"; //para que si vuelve a entrar que solo selecciones por que vp1 cambio a 1
+        
 }
     
     private void abrir_Prevista(){
