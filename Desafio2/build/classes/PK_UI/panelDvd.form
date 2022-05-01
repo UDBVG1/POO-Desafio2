@@ -49,38 +49,44 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jtitulo" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jdirector" alignment="0" pref="114" max="32767" attributes="0"/>
+                          <Component id="jgenero" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                              <Component id="genero" min="-2" pref="84" max="-2" attributes="0"/>
-                              <EmptySpace pref="97" max="32767" attributes="0"/>
-                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="duracion" min="-2" pref="90" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="titulo" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="director" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="Agregar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="Buscar" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="tgenero" min="-2" pref="89" max="-2" attributes="0"/>
+                              <EmptySpace pref="47" max="32767" attributes="0"/>
+                              <Component id="jduracion" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="tduracion" min="-2" pref="90" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="tdirector" alignment="1" max="32767" attributes="0"/>
+                          <Component id="ttitulo" alignment="1" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                      <Component id="agregar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="modificar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="buscar" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="junidades" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="unidadesDis" max="32767" attributes="0"/>
+                      <Component id="tunidades" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="jtexto" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jcodigo" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="tcodigo" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -90,32 +96,41 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <Component id="jtexto" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="titulo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jcodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tcodigo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="director" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtitulo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ttitulo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="genero" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="duracion" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jdirector" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tdirector" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jgenero" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tgenero" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tduracion" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jduracion" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="unidadesDis" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel6" alignment="3" max="32767" attributes="0"/>
+                  <Component id="tunidades" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="junidades" alignment="3" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="Buscar" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="Agregar" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="buscar" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                      <Component id="agregar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="modificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="contenedor" min="-2" pref="139" max="-2" attributes="0"/>
@@ -124,33 +139,33 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="jtitulo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Titulo:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="jdirector">
       <Properties>
         <Property name="text" type="java.lang.String" value="Director:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="jduracion">
       <Properties>
         <Property name="text" type="java.lang.String" value="Duracion:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="jgenero">
       <Properties>
         <Property name="text" type="java.lang.String" value="Genero:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="titulo">
+    <Component class="javax.swing.JTextField" name="ttitulo">
     </Component>
-    <Component class="javax.swing.JTextField" name="director">
+    <Component class="javax.swing.JTextField" name="tdirector">
     </Component>
-    <Component class="javax.swing.JTextField" name="genero">
+    <Component class="javax.swing.JTextField" name="tgenero">
     </Component>
-    <Component class="javax.swing.JTextField" name="duracion">
+    <Component class="javax.swing.JTextField" name="tduracion">
     </Component>
     <Container class="javax.swing.JScrollPane" name="contenedor">
 
@@ -170,28 +185,54 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="Agregar">
+    <Component class="javax.swing.JButton" name="agregar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Agregar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AgregarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="agregarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="Buscar">
+    <Component class="javax.swing.JButton" name="buscar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BuscarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="junidades">
       <Properties>
         <Property name="text" type="java.lang.String" value="Unidades Disponibles:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="unidadesDis">
+    <Component class="javax.swing.JTextField" name="tunidades">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jtexto">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="cc" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="* agregar % para realizar una busqueda por Parcial"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jcodigo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Codigo a Modificar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="modificar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Modificar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modificarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tcodigo">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tcodigoKeyPressed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

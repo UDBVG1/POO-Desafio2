@@ -238,14 +238,14 @@ public class panelCd extends javax.swing.JPanel {
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
          int canciones;
 
-        SetCd.setTipo(1);
+//        SetCd.setTipo(1);
         SetCd.setTitulo(titulo.getText());
         SetCd.setArtista(artista.getText());
         SetCd.setGenero(genero.getText());
         SetCd.setDuracion(duracion.getText());
 
-        canciones = Integer.parseInt(numCan.getText());
-        SetCd.setNumCanciones(canciones);
+//        canciones = Integer.parseInt(numCan.getText());
+//        SetCd.setNumCanciones(canciones);
         
         jMostrar.setModel(insertarCD.select(SetCd));
             // TODO add your handling code here:
