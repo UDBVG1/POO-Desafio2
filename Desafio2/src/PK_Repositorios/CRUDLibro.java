@@ -27,16 +27,6 @@ public class CRUDLibro {
     int cantTD=0;
     private final String SQL_INSERTLIRBOS = "insert into libros(Titulo, autor, num_pag,editorial, ISBN, idEscrito) values(?,?,?,?,?,?);";
     private final String SQL_SELECTLIBROS = "SELECT titulo,autor,num_pag,editorial,isbn from libros where titulo like ? or autor like ? or editorial like ? or isbn like ?;";
-    private final String SQL_SELECTDSIPONIBILIDAD = "SELECT 	m.codigo,case when m.idlibros is not null then l.titulo\n" +
-                                                    "when m.idrevistas is not null then r.titulo\n" +
-                                                    "when m.idm_cd is not null then mc.titulo\n" +
-                                                    "when m.idm_dvd is not null then md.titulo\n" +
-                                                    "else null end AS titulo,cantidad_total,cantidad_disponible\n" +
-                                                    " FROM material m\n" +
-                                                    "LEFT join libros l on m.idlibros=l.idlibros\n" +
-                                                    "LEFT join revista r on m.idrevistas=r.idrevistas\n" +
-                                                    "LEFT join m_cd mc on m.idm_cd=mc.idm_cd\n" +
-                                                    "LEFT join m_dvd md on m.idm_dvd=md.idm_dvd;";
     private final String SQL_SELECTRN = "select count(*) from material where codigo = ?;"; //buscar si no esta repetido el id
     private final String SQL_INSERTM = "insert into material (codigo,cantidad_total,cantidad_disponible,idlibros) values(?,?,?,?);";//insertar a la tabla matrial para libro
     private final String SQL_SELECTID = "SELECT titulo,autor,num_pag,editorial,isbn,l.idlibros,m.cantidad_total,m.cantidad_disponible from libros l\n" +
@@ -156,39 +146,6 @@ public class CRUDLibro {
             stmt.setString(index++, libro.edit);
             stmt.setString(index, libro.code);
             System.out.println("Ejecutando query:" + SQL_SELECTLIBROS);
-            rs = stmt.executeQuery();
-            ResultSetMetaData meta = rs.getMetaData();
-            int numberOfColumns = meta.getColumnCount();
-            for (int i = 1; i<= numberOfColumns; i++) {
-            dtm.addColumn(meta.getColumnLabel(i));
-            }
-            while (rs.next()) {
-                    
-                    Object[] fila = new Object[numberOfColumns];
-                    for (int i = 0; i<numberOfColumns; i++) {
-                    fila[i]=rs.getObject(i+1);
-                    }
-                    dtm.addRow(fila);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            ConeccionBD.closeStatement(stmt);
-            ConeccionBD.closeConnection(conn);
-            ConeccionBD.closeResulset(rs);
-        }
-        return dtm;
-    }
-    
-    public DefaultTableModel selectall(){
-        DefaultTableModel dtm = new DefaultTableModel();
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-       
-        try {
-            conn = ConeccionBD.getConexion();
-            stmt = conn.prepareStatement(SQL_SELECTDSIPONIBILIDAD);
             rs = stmt.executeQuery();
             ResultSetMetaData meta = rs.getMetaData();
             int numberOfColumns = meta.getColumnCount();
