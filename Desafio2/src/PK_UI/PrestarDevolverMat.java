@@ -19,7 +19,11 @@ public class PrestarDevolverMat extends javax.swing.JPanel {
      */
     public PrestarDevolverMat() {
         initComponents();
-    PrestandDevol = new CRUD();
+        PrestandDevol = new CRUD();
+        cantDevolucion.setVisible(false);
+        jLabel5.setVisible(false);
+        cantPrestamo.setVisible(false);
+        jLabel4.setVisible(false);
     }
 
     /**
@@ -57,11 +61,30 @@ public class PrestarDevolverMat extends javax.swing.JPanel {
 
         jLabel5.setText("Cantidad prestamo:");
 
+        cantDevolucion.setText("0");
+
+        cantPrestamo.setText("0");
+        cantPrestamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cantPrestamoActionPerformed(evt);
+            }
+        });
+
         TipoMove.add(Prestamo);
         Prestamo.setText("Prestamo.");
+        Prestamo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                PrestamoItemStateChanged(evt);
+            }
+        });
 
         TipoMove.add(Devolucion);
         Devolucion.setText("Devolucion");
+        Devolucion.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                DevolucionItemStateChanged(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Presta y Devolucion de materiales");
@@ -79,39 +102,39 @@ public class PrestarDevolverMat extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(cantDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5)
-                            .addGap(18, 18, 18)
-                            .addComponent(cantPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(tipo)
                             .addGap(18, 18, 18)
                             .addComponent(Prestamo)
                             .addGap(72, 72, 72)
-                            .addComponent(Devolucion)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(hacerCambios)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(CodeMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(34, 34, 34)
-                                        .addComponent(jLabel6))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(48, 48, 48)
-                                        .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addContainerGap(113, Short.MAX_VALUE))
+                            .addComponent(Devolucion))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(hacerCambios)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(CodeMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(34, 34, 34)
+                                            .addComponent(jLabel6))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(48, 48, 48)
+                                            .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cantDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cantPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,8 +158,8 @@ public class PrestarDevolverMat extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(cantDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(cantPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cantPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
                 .addGap(30, 30, 30)
                 .addComponent(hacerCambios)
                 .addContainerGap(53, Short.MAX_VALUE))
@@ -144,29 +167,54 @@ public class PrestarDevolverMat extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void hacerCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hacerCambiosActionPerformed
-          int prestamo, devolucion ;
-          String codigo, tipo,idsocio;
+  
+          int prestamo=0, devolucion=0 ;
+          String codigo, tipo1="" ,usSocio;
           boolean Busuario = false;
           if(Prestamo.isSelected()==true)
             {
-             tipo = "prest";
-             
+                tipo1 = "prest";
             }
-          else{
-             tipo = "devol"; 
-             
-          }
+           if(Devolucion.isSelected()==true){
+             tipo1 = "devol"; 
+          }  
           prestamo = Integer.parseInt(cantPrestamo.getText());
           devolucion = Integer.parseInt(cantDevolucion.getText());
+          
           codigo = CodeMaterial.getText();
-          idsocio = usuario.getText();
-          
-          Busuario = PrestandDevol.usuario(idsocio);
+          usSocio = usuario.getText();
+
+          Busuario = PrestandDevol.usuario(usSocio);
+          int idSocio = PrestandDevol.RidSocio();
           System.out.println(Busuario);
-          PrestandDevol.Prestamo(Busuario, tipo, idsocio, idsocio);
           
-          PrestandDevol.ModificarDisponibilidad(prestamo, devolucion, codigo);
+          int CantNow = PrestandDevol.SELECTDisponibilidad(codigo);
+          System.out.println(CantNow);
+          
+          PrestandDevol.UPDATEDisponibilidad(CantNow, prestamo, devolucion, codigo);
+          
+          PrestandDevol.TablaPrestamo(Busuario, tipo1, idSocio, codigo);
+          
     }//GEN-LAST:event_hacerCambiosActionPerformed
+
+    private void DevolucionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DevolucionItemStateChanged
+        jLabel4.setVisible(true);
+        cantDevolucion.setVisible(true);
+        jLabel5.setVisible(false);
+        cantPrestamo.setVisible(false);
+        
+    }//GEN-LAST:event_DevolucionItemStateChanged
+
+    private void PrestamoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PrestamoItemStateChanged
+        jLabel4.setVisible(false);
+        cantDevolucion.setVisible(false);
+        jLabel5.setVisible(true);
+        cantPrestamo.setVisible(true);
+    }//GEN-LAST:event_PrestamoItemStateChanged
+
+    private void cantPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantPrestamoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cantPrestamoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

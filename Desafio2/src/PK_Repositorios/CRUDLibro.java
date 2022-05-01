@@ -147,6 +147,7 @@ public class CRUDLibro {
             stmt.setString(index, libro.code);
             System.out.println("Ejecutando query:" + SQL_SELECTLIBROS);
             rs = stmt.executeQuery();
+            
             ResultSetMetaData meta = rs.getMetaData();
             int numberOfColumns = meta.getColumnCount();
             for (int i = 1; i<= numberOfColumns; i++) {

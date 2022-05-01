@@ -48,13 +48,13 @@ public class CRUD {
                                             "FROM material m LEFT join libros l on m.idlibros=l.idlibros LEFT join revista r on m.idrevistas=r.idrevistas "+
                                             "LEFT join m_cd mc on m.idm_cd=mc.idm_cd LEFT join m_dvd md on m.idm_dvd=md.idm_dvd " +
                                             "WHERE m.codigo= ?;";
-    private final String SQL_SELECTSOCIO = "select (usuario) from socio where usuario = ?";//BUSCAR SI EL USUARIO EXISTE
+    private final String SQL_SELECTSOCIO = "select idsocio from socio where usuario = ?;";//BUSCAR SI EL USUARIO EXISTE
     private final String SQL_INSERTPRESTAMO = "insert into prestamos (fechaprestamo,tipomov,idsocio,codigo) values(sysdate(),?,?,?) ;";//INSERTAR A LA TABLA PRESTAMO
-    private final String SQL_SELECTMATERIAL = "select (cantidad_disponible) from material where idlibros = ?;";//SELECCIONAR MATERIAL
-    private final String SQL_UPDATEDIS = "update material set cantidad_disponible= ? where idlibros = ?;";
+    private final String SQL_SELECTMATERIAL = "select cantidad_disponible from material where codigo = ?;";//SELECCIONAR MATERIAL
+    private final String SQL_UPDATEDIS = "update material set cantidad_disponible= ? where codigo = ?;";
 
     private int id=0;
-    
+    private int idSocio = 0;
     
         public void BorrarDatos(int valor) {
         int rows;
@@ -171,64 +171,96 @@ public class CRUD {
     }
     
     public boolean usuario(String usuario){
+        System.out.println(usuario);
         Connection conn = null;
         PreparedStatement stmt = null;
+        ResultSet rs = null;
         boolean Resolucion = false;
-        ResultSet rows;
+
         try {
             conn = ConeccionBD.getConexion();
             stmt = conn.prepareStatement(SQL_SELECTSOCIO);
             int index = 1;
-            stmt.setString(index, usuario);
-            rows = stmt.executeQuery();
-            String usuarioSQL = rows.getObject(1).toString();
-            
-         Resolucion = usuarioSQL.equals(usuario);
 
+            
+            stmt.setString(index, usuario);
+            
+            rs = stmt.executeQuery();
+            
+            while (rs.next()){
+            idSocio = rs.getInt(1);
+            System.out.println(idSocio);
+            Resolucion = true;
+            }
+         
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             ConeccionBD.closeStatement(stmt);
             ConeccionBD.closeConnection(conn);
+            ConeccionBD.closeResulset(rs);
         }
         return Resolucion;
     }
     
-//    public LocalTime fechaDeHoy(){
-//        return java.time.LocalTime.now();
-//    }
+    public int RidSocio(){
+        return idSocio;
+    }
     
-    public void ModificarDisponibilidad(int prestamo, int devolucion, String codigo){
+    public int SELECTDisponibilidad(String codigo){
         Connection conn = null;
         PreparedStatement stmt = null;
         PreparedStatement stmt1 = null;
         ResultSet rs = null;
-        int cantDisNow = 0,cantUpdate = 0;
+        int cantDisNow = 0, index=1;
         
         try {
             conn = ConeccionBD.getConexion();
             stmt = conn.prepareStatement(SQL_SELECTMATERIAL);
-            stmt1 = conn.prepareStatement(SQL_UPDATEDIS);
-            if(prestamo > 0){
-            stmt.setString(1,codigo);
-            rs = stmt.executeQuery();
-            cantDisNow = rs.getInt(3);
             
+            stmt.setString(index,codigo);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()){
+            cantDisNow = rs.getInt(1);
+            System.out.println(cantDisNow);
+            }
+
+                        
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConeccionBD.closeStatement(stmt);
+            ConeccionBD.closeConnection(conn);
+        }
+        
+        return cantDisNow;
+    }
+    
+    public void UPDATEDisponibilidad(int cantDisNow,int prestamo, int devolucion, String codigo){
+        int rows = 0;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int cantUpdate = 0,index=1;
+        
+        try {
+            conn = ConeccionBD.getConexion();
+            stmt = conn.prepareStatement(SQL_UPDATEDIS);
+            if(prestamo > 0){           
             cantUpdate = cantDisNow - prestamo;
-            stmt1.setInt(1, cantUpdate);
-            stmt1.setString(2,codigo);
-            System.out.println("Material fue prestado exitosamente");
-            }else{
-            stmt.setString(1,codigo);
-            rs = stmt.executeQuery();
-            cantDisNow = rs.getInt(3);
-            
+
+            }else{ 
             cantUpdate = cantDisNow + devolucion;
-            stmt1.setInt(1, cantUpdate);
-            stmt1.setString(2,codigo);
-            System.out.println("Material fue devuelto exitosamente");
+
             }
             
+        stmt.setInt(index++, cantUpdate);
+        stmt.setString(index,codigo);
+        rows = stmt.executeUpdate();    
+        System.out.println(cantUpdate); 
+        if (rows > 0) {
+                JOptionPane.showMessageDialog(null, "Registro exitoso" + "/n" + "Registros afectados" + rows, "Ingresado", JOptionPane.INFORMATION_MESSAGE);
+        }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -237,7 +269,7 @@ public class CRUD {
         }
     }
     
-    public void Prestamo(boolean Resolucion,String tipomov,String idsocio,String codigo){
+    public void TablaPrestamo(boolean Resolucion,String tipomov,int idsocio,String codigo){
         Connection conn = null;
         PreparedStatement stmt = null;
         String idLibro = "";
@@ -250,7 +282,7 @@ public class CRUD {
             int index = 1;
             
             stmt.setString(index++, tipomov);
-            stmt.setString(index++, idsocio);
+            stmt.setInt(index++, idsocio);
             stmt.setString(index, codigo);
 
             rows = stmt.executeUpdate();
