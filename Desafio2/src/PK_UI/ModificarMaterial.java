@@ -95,8 +95,6 @@ public String vp4="0";
         setPreferredSize(new java.awt.Dimension(440, 348));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-
         jButton1.setText("Libro");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

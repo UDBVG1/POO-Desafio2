@@ -104,7 +104,6 @@ public String vp4="0";
 
         jButton7.setText("jButton7");
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setPreferredSize(new java.awt.Dimension(440, 348));
 
         jButton1.setText("Libro");
@@ -140,7 +139,7 @@ public String vp4="0";
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(28, 36, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(32, 32, 32)
                 .addComponent(jButton2)
@@ -148,7 +147,7 @@ public String vp4="0";
                 .addComponent(jButton3)
                 .addGap(30, 30, 30)
                 .addComponent(jButton4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
             .addComponent(jTabbedPane1)
         );
         jPanel1Layout.setVerticalGroup(
