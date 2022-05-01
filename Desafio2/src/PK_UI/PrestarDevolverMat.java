@@ -153,6 +153,7 @@ public class PrestarDevolverMat extends javax.swing.JPanel {
         else{
             tipo1 = "devol";           
         }
+        tipo1="test";
           int prestamo = Integer.parseInt(cantPrestamo.getText());
           int devolucion = Integer.parseInt(cantDevolucion.getText());
           String codigo = CodeMaterial.getText();
