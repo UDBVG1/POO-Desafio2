@@ -40,8 +40,8 @@ public class CRUD {
                                                     "LEFT join m_dvd md on m.idm_dvd=md.idm_dvd;";    
     private final String SQL_DELETE_LIBROS="DELETE a,b FROM material a LEFT JOIN libros b ON b.id_libros = a.idlibros WHERE a.idlibros = ? ;";
     private final String SQL_DELETE_REVISTA="DELETE a,b FROM material a LEFT JOIN REVISTA b ON b.idrevistas = a.idrevistas WHERE a.idrevistas = ? ;";
-    private final String SQL_DELETE_CD="DELETE a,b FROM material a LEFT JOIN m_cd b ON b.id_m_cd = a.id_m_cd WHERE a.id_m_cd = ? ;";
-    private final String SQL_DELETE_DVD="DELETE a,b FROM material a LEFT JOIN m_dvd b ON b.id_m_dvd = a.id_m_dvd WHERE a.id_m_dvd = ? ;";
+    private final String SQL_DELETE_CD="DELETE a,b FROM material a LEFT JOIN m_cd b ON b.idm_cd = a.idm_cd WHERE a.idm_cd = ? ;";
+    private final String SQL_DELETE_DVD="DELETE a,b FROM material a LEFT JOIN m_dvd b ON b.idm_dvd = a.idm_dvd WHERE a.idm_dvd = ? ;";
     private final String SQL_SELECTmaterial="SELECT m.codigo,m.idlibros,m.idrevistas,m.idm_cd,m.idm_dvd, case when m.idlibros is not null then l.titulo " +
                                             "WHEN m.idrevistas is not null THEN r.titulo WHEN m.idm_cd is not null THEN " +
                                             "mc.titulo when m.idm_dvd is not null then md.titulo else null end AS titulo,cantidad_total,cantidad_disponible "+
@@ -198,50 +198,37 @@ public class CRUD {
 //        return java.time.LocalTime.now();
 //    }
     
-    public void ModificarDisponibilidad(int disponible){
+    public void ModificarDisponibilidad(int prestamo, int devolucion, String codigo){
         Connection conn = null;
         PreparedStatement stmt = null;
         PreparedStatement stmt1 = null;
-        int rows = 0;
-        //aqui tengo pensado poner los dos mandar a traer los datos y tambien hacer el update
+        ResultSet rs = null;
+        int cantDisNow = 0,cantUpdate = 0;
+        
         try {
             conn = ConeccionBD.getConexion();
             stmt = conn.prepareStatement(SQL_SELECTMATERIAL);
             stmt1 = conn.prepareStatement(SQL_UPDATEDIS);
+            if(prestamo > 0){
+            stmt.setString(1,codigo);
+            rs = stmt.executeQuery();
+            cantDisNow = rs.getInt(3);
             
-            
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            ConeccionBD.closeStatement(stmt);
-            ConeccionBD.closeConnection(conn);
-        }
-    }   
-    
-    public void Prestamo(boolean Resolucion,String tipomov,int idsocio,String codigo,int disponible){
-        Connection conn = null;
-        PreparedStatement stmt = null;
-
-        int rows = 0;
-        try {
-            conn = ConeccionBD.getConexion();
-            stmt = conn.prepareStatement(SQL_INSERTPRESTAMO);
-            if(Resolucion){
-                int index = 1;
-                
-                stmt.setString(index++, tipomov);
-                stmt.setInt(index++, idsocio);
-                stmt.setString(index, codigo);
-
-                rows = stmt.executeUpdate();
-                System.out.println("Registro exitoso Usuario valido" + "/n" + "Registros afectados" + rows);
-
+            cantUpdate = cantDisNow - prestamo;
+            stmt1.setInt(1, cantUpdate);
+            stmt1.setString(2,codigo);
+            System.out.println("Material fue prestado exitosamente");
             }else{
-                JOptionPane.showMessageDialog(null, "Error al guardar datos, Usuario no existente", "Error", JOptionPane.INFORMATION_MESSAGE);            
+            stmt.setString(1,codigo);
+            rs = stmt.executeQuery();
+            cantDisNow = rs.getInt(3);
+            
+            cantUpdate = cantDisNow + devolucion;
+            stmt1.setInt(1, cantUpdate);
+            stmt1.setString(2,codigo);
+            System.out.println("Material fue devuelto exitosamente");
             }
-
-
+            
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -249,4 +236,35 @@ public class CRUD {
             ConeccionBD.closeConnection(conn);
         }
     }
+    
+    public void Prestamo(boolean Resolucion,String tipomov,String idsocio,String codigo){
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        String idLibro = "";
+        int rows = 0;
+        try {
+            conn = ConeccionBD.getConexion();
+            stmt = conn.prepareStatement(SQL_INSERTPRESTAMO);
+            
+            if(Resolucion){ 
+            int index = 1;
+            
+            stmt.setString(index++, tipomov);
+            stmt.setString(index++, idsocio);
+            stmt.setString(index, codigo);
+
+            rows = stmt.executeUpdate();
+            System.out.println("Registro exitoso Usuario valido" + "/n" + "Registros afectados" + rows);
+            
+             }else{
+            JOptionPane.showMessageDialog(null, "Error al guardar datos, Usuario no existente", "Error", JOptionPane.INFORMATION_MESSAGE);
+            }
+            }catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConeccionBD.closeStatement(stmt);
+            ConeccionBD.closeConnection(conn);
+        }
+
+    }   
 }
