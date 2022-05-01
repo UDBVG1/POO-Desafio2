@@ -7,7 +7,10 @@ package PK_UI;
 
 
 import PK_Modelos.ObjetoDvd;
+import PK_Modelos.ObjetoLibro;
 import PK_Repositorios.CRUDDvd;
+import PK_Utilidades.Opciones;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -23,6 +26,32 @@ public class panelDvd extends javax.swing.JPanel {
         initComponents();
         SetDvd = new ObjetoDvd();
         insertarDVD = new CRUDDvd();
+        
+        agregar.setVisible(Opciones.opcionAgregar);
+        modificar.setVisible(Opciones.opcionModificar);
+        tcodigo.setVisible(Opciones.opcionModificar);
+        jcodigo.setVisible(Opciones.opcionModificar);
+        buscar.setVisible(Opciones.opcionBuscar);
+        if (Opciones.opcionAgregar){
+            tgenero.setVisible(Opciones.opcionAgregar);
+            jdirector.setVisible(Opciones.opcionAgregar);
+            jduracion.setVisible(Opciones.opcionAgregar);
+        }else if (Opciones.opcionModificar){
+            jtexto.setVisible(Opciones.opcionModificar);
+            tgenero.setVisible(Opciones.opcionModificar);
+            jdirector.setVisible(Opciones.opcionModificar);
+            jduracion.setVisible(Opciones.opcionModificar);
+            buscar.setVisible(false);
+            modificar.setEnabled(true);
+        }else if (Opciones.opcionBuscar){
+            tcodigo.setVisible(Opciones.opcionBuscar);
+            jcodigo.setVisible(Opciones.opcionBuscar);
+            junidades.setVisible(false);
+            tunidades.setVisible(false);
+            buscar.setVisible(false);
+            modificar.setEnabled(false);
+        }
+        jtexto.setVisible(false);     
     }
 
     /**
@@ -37,20 +66,24 @@ public class panelDvd extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        titulo = new javax.swing.JTextField();
-        director = new javax.swing.JTextField();
-        genero = new javax.swing.JTextField();
-        duracion = new javax.swing.JTextField();
+        jtitulo = new javax.swing.JLabel();
+        jdirector = new javax.swing.JLabel();
+        jduracion = new javax.swing.JLabel();
+        jgenero = new javax.swing.JLabel();
+        ttitulo = new javax.swing.JTextField();
+        tdirector = new javax.swing.JTextField();
+        tgenero = new javax.swing.JTextField();
+        tduracion = new javax.swing.JTextField();
         contenedor = new javax.swing.JScrollPane();
         jMostrar = new javax.swing.JTable();
-        Agregar = new javax.swing.JButton();
-        Buscar = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        unidadesDis = new javax.swing.JTextField();
+        agregar = new javax.swing.JButton();
+        buscar = new javax.swing.JButton();
+        junidades = new javax.swing.JLabel();
+        tunidades = new javax.swing.JTextField();
+        jtexto = new javax.swing.JLabel();
+        jcodigo = new javax.swing.JLabel();
+        modificar = new javax.swing.JButton();
+        tcodigo = new javax.swing.JTextField();
 
         jLabel1.setText("jLabel1");
 
@@ -67,13 +100,13 @@ public class panelDvd extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        jLabel2.setText("Titulo:");
+        jtitulo.setText("Titulo:");
 
-        jLabel3.setText("Director:");
+        jdirector.setText("Director:");
 
-        jLabel4.setText("Duracion:");
+        jduracion.setText("Duracion:");
 
-        jLabel5.setText("Genero:");
+        jgenero.setText("Genero:");
 
         jMostrar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -88,21 +121,39 @@ public class panelDvd extends javax.swing.JPanel {
         ));
         contenedor.setViewportView(jMostrar);
 
-        Agregar.setText("Agregar");
-        Agregar.addActionListener(new java.awt.event.ActionListener() {
+        agregar.setText("Agregar");
+        agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AgregarActionPerformed(evt);
+                agregarActionPerformed(evt);
             }
         });
 
-        Buscar.setText("Buscar");
-        Buscar.addActionListener(new java.awt.event.ActionListener() {
+        buscar.setText("Buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscarActionPerformed(evt);
+                buscarActionPerformed(evt);
             }
         });
 
-        jLabel6.setText("Unidades Disponibles:");
+        junidades.setText("Unidades Disponibles:");
+
+        jtexto.setForeground(new java.awt.Color(204, 0, 0));
+        jtexto.setText("* agregar % para realizar una busqueda por Parcial");
+
+        jcodigo.setText("Codigo a Modificar");
+
+        modificar.setText("Modificar");
+        modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarActionPerformed(evt);
+            }
+        });
+
+        tcodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tcodigoKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -113,75 +164,88 @@ public class panelDvd extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(duracion, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(titulo, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(director)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Agregar)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jdirector, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                            .addComponent(jgenero, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Buscar))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tgenero, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                                .addComponent(jduracion)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tduracion, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tdirector)
+                            .addComponent(ttitulo)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
+                        .addComponent(agregar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(modificar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buscar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(junidades)
                         .addGap(18, 18, 18)
-                        .addComponent(unidadesDis)))
+                        .addComponent(tunidades))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jtexto)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jcodigo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tcodigo)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addComponent(jtexto)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcodigo)
+                    .addComponent(tcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(director, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtitulo)
+                    .addComponent(ttitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(duracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jdirector)
+                    .addComponent(tdirector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jgenero)
+                    .addComponent(tgenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tduracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jduracion))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(unidadesDis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tunidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(junidades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Buscar, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Agregar, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(buscar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(agregar)
+                        .addComponent(modificar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
+    private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
         int IDDVD;
 
         SetDvd.setTipo(2);
-        SetDvd.setTitulo(titulo.getText());
-        SetDvd.setDirector(director.getText());      
-        SetDvd.setGenero(genero.getText());
-        SetDvd.setDuracion(duracion.getText());
+        SetDvd.setTitulo(ttitulo.getText());
+        SetDvd.setDirector(tdirector.getText());      
+        SetDvd.setGenero(tgenero.getText());
+        SetDvd.setDuracion(tduracion.getText());
 
         String IDcantd = insertarDVD.NumRandom();
         System.out.println(IDcantd);
-        int CantD = Integer.parseInt(unidadesDis.getText());
+        int CantD = Integer.parseInt(tunidades.getText());
         int CantT = CantD;
         
         
@@ -190,38 +254,93 @@ public class panelDvd extends javax.swing.JPanel {
         
         insertarDVD.insertmaterialdisponible(IDcantd,CantD, CantT, IDDVD);        // TODO add your handling code here:
          // TODO add your handling code here:
-    }//GEN-LAST:event_AgregarActionPerformed
+    }//GEN-LAST:event_agregarActionPerformed
 
-    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
 
         SetDvd.setTipo(1);
-        SetDvd.setTitulo(titulo.getText());
-        SetDvd.setDirector(director.getText());
-        SetDvd.setGenero(genero.getText());
-        SetDvd.setDuracion(duracion.getText());
+        SetDvd.setTitulo(ttitulo.getText());
+        SetDvd.setDirector(tdirector.getText());
+        SetDvd.setGenero(tgenero.getText());
+        SetDvd.setDuracion(tduracion.getText());
+        tunidades.setText(String.valueOf(insertarDVD.selectCant()));
 
         jMostrar.setModel(insertarDVD.select(SetDvd));
-           // TODO add your handling code here:
-    }//GEN-LAST:event_BuscarActionPerformed
+        mostrar();
 
+           // TODO add your handling code here:
+    }//GEN-LAST:event_buscarActionPerformed
+    private void mostrar(){
+            ObjetoDvd dvdmod = insertarDVD.selectId(tcodigo.getText());
+            ttitulo.setText(dvdmod.titulo);
+            tdirector.setText(dvdmod.director);
+            tgenero.setText(dvdmod.genero);
+            tduracion.setText(dvdmod.duracion);
+            modificar.setEnabled(true);
+    }
+    
+    private void tcodigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tcodigoKeyPressed
+        // TODO add your handling code here:
+                if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            //metodoselectModificar
+            ObjetoDvd dvdmod = insertarDVD.selectId(tcodigo.getText());
+            ttitulo.setText(dvdmod.titulo);
+            tdirector.setText(dvdmod.director);
+            tgenero.setText(dvdmod.genero);
+            tduracion.setText(dvdmod.duracion);
+            tunidades.setText(String.valueOf(insertarDVD.selectCant()));
+            modificar.setEnabled(true);
+        }
+    }//GEN-LAST:event_tcodigoKeyPressed
+
+    private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
+        int cantT;
+
+        SetDvd.setTipo(1);
+        SetDvd.setTitulo(ttitulo.getText());
+        SetDvd.setDirector(tdirector.getText());
+        SetDvd.setGenero(tgenero.getText());
+        SetDvd.setDuracion(tduracion.getText());
+        
+        cantT = Integer.parseInt(tunidades.getText());
+        
+        insertarDVD.updateDatos(SetDvd);
+        insertarDVD.updateMaterial(cantT, tcodigo.getText());
+        clear();
+        modificar.setEnabled(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_modificarActionPerformed
+    
+    private void clear(){
+        tcodigo.setText("");
+        ttitulo.setText("");
+        tdirector.setText("");
+        tduracion.setText("");
+        tgenero.setText("");
+        tunidades.setText("");
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Agregar;
-    private javax.swing.JButton Buscar;
+    private javax.swing.JButton agregar;
+    private javax.swing.JButton buscar;
     private javax.swing.JScrollPane contenedor;
-    private javax.swing.JTextField director;
-    private javax.swing.JTextField duracion;
-    private javax.swing.JTextField genero;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JTable jMostrar;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField titulo;
-    private javax.swing.JTextField unidadesDis;
+    private javax.swing.JLabel jcodigo;
+    private javax.swing.JLabel jdirector;
+    private javax.swing.JLabel jduracion;
+    private javax.swing.JLabel jgenero;
+    private javax.swing.JLabel jtexto;
+    private javax.swing.JLabel jtitulo;
+    private javax.swing.JLabel junidades;
+    private javax.swing.JButton modificar;
+    private javax.swing.JTextField tcodigo;
+    private javax.swing.JTextField tdirector;
+    private javax.swing.JTextField tduracion;
+    private javax.swing.JTextField tgenero;
+    private javax.swing.JTextField ttitulo;
+    private javax.swing.JTextField tunidades;
     // End of variables declaration//GEN-END:variables
 }

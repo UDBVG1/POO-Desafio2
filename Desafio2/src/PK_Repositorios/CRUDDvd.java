@@ -23,15 +23,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CRUDDvd {
     private int id = 0;
+    int cantTD=0;
+    private int cantDq=0;
     private final String SQL_INSERTMDVD = "insert into m_dvd (titulo, director,duracion,genero,idAudioVisual) values(?,?,?,?,?);";
     private final String SQL_SELECTMDVD = "SELECT titulo, director,duracion,genero from m_dvd where titulo like ? or director like ? or duracion like ? or genero like ?;";
     private final String SQL_SELECTRN = "select count(*) from material where codigo = ?;"; //buscar si no esta repetido el id
     private final String SQL_INSERTM = "insert into material (codigo,cantidad_total,cantidad_disponible,idm_dvd) values(?,?,?,?);";//insertar a la tabla matrial para DVD
-    private final String SQL_SELECTID = "SELECT titulo,director,duracion,genero,l.idm_dvd from m_dvd l\n"
+    private final String SQL_SELECTID = "SELECT titulo,director,duracion,genero,l.idm_dvd, m.cantidad_total, m.cantidad_disponible from m_dvd l\n"
                                         + "inner join material m ON l.idm_dvd =m.idm_dvd\n"
                                         + "where codigo= ?";
     private final String SQL_UPDATEMDVD = "update m_dvd set titulo =?, director =?, duracion =? ,genero =? where idm_dvd =?;";
-
+    private final String SQL_UPDATEMATERIAL = "update material  set cantidad_total =?, cantidad_disponible =? where codigo = ?;";   
+    
     public int insertarDatos(ObjetoDvd DVD) {
         int rows = 0;
         int iddvd = 0;
@@ -189,7 +192,9 @@ public class CRUDDvd {
                     dvdMod.setDirector(rs.getObject(2).toString());
                     dvdMod.setDuracion(rs.getObject(3).toString());
                     dvdMod.setGenero(rs.getObject(4).toString());
-                    id=(Integer.parseInt(rs.getObject(6).toString()));
+                    id=(Integer.parseInt(rs.getObject(5).toString()));
+                    cantTD=(Integer.parseInt(rs.getObject(6).toString()));
+                    cantDq=(Integer.parseInt(rs.getObject(7).toString()));
             } 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -200,6 +205,9 @@ public class CRUDDvd {
         }
         return dvdMod;
     }
+        public int selectCant(){
+        return cantTD;
+         }
         public int updateDatos(ObjetoDvd DVD) {
         int rows = 0;
         Connection conn = null;
@@ -230,6 +238,39 @@ public class CRUDDvd {
         }
         
         return rows;
+    }
+        
+        public void updateMaterial(int cantT, String Cod){
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        if (cantT>cantTD) {
+            cantDq = (cantT-cantTD)+cantDq;
+        } else {
+            cantDq = cantDq-(cantTD-cantT);
+        }
+        int rows = 0;
+        try {
+            conn = ConeccionBD.getConexion();
+            stmt = conn.prepareStatement(SQL_UPDATEMATERIAL);
+            int index = 1;
+            stmt.setInt(index++, cantT);
+            stmt.setInt(index++, cantDq);
+            stmt.setString(index, Cod);
+
+        rows = stmt.executeUpdate();
+        
+        if (rows > 0) {
+                System.out.println("Registro exitoso de material" + "/n" + "Registros afectados" + rows);
+            }
+        else{
+            System.out.println("Registro NO exitoso del material!!");
+        }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConeccionBD.closeStatement(stmt);
+            ConeccionBD.closeConnection(conn);
+        }
     }
         
 }
