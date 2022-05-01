@@ -35,17 +35,10 @@ public class panelRevista extends javax.swing.JPanel {
             anioPublicacion.setVisible(Opciones.opcionAgregar);
             jLabel4.setVisible(Opciones.opcionAgregar);
             jLabel8.setVisible(Opciones.opcionBuscar);
-            jMostrar.setVisible(Opciones.opcionBuscar);
-            jMostrar.setVisible(Opciones.opcionBuscar);
-            jMostrar.getTableHeader().setVisible(Opciones.opcionBuscar);
         }else if (Opciones.opcionModificar){
             anioPublicacion.setVisible(Opciones.opcionModificar);
             jLabel4.setVisible(Opciones.opcionModificar);
-            jLabel8.setVisible(Opciones.opcionBuscar);
-            jScrollPane1.setVisible(Opciones.opcionBuscar);
-            jMostrar.setVisible(Opciones.opcionBuscar);
-            jMostrar.getTableHeader().setVisible(Opciones.opcionBuscar);
-            
+            jLabel8.setVisible(Opciones.opcionBuscar);        
         }else if (Opciones.opcionBuscar){
             anioPublicacion.setVisible(false);
             unidadesDis.setVisible(false);
