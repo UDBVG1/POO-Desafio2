@@ -98,7 +98,6 @@ public class Desafio2Frame extends javax.swing.JFrame {
         });
 
         prestarMaterial.setText("Prestamos");
-        prestarMaterial.setActionCommand("Prestamos");
         prestarMaterial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 prestarMaterialActionPerformed(evt);
@@ -151,11 +150,11 @@ public class Desafio2Frame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(modificarMaterial)
                         .addGap(18, 18, 18)
-                        .addComponent(listarDisponible)
+                        .addComponent(buscarMaterial)
                         .addGap(18, 18, 18)
                         .addComponent(borrarMaterial)
                         .addGap(18, 18, 18)
-                        .addComponent(buscarMaterial)
+                        .addComponent(listarDisponible)
                         .addGap(18, 18, 18)
                         .addComponent(prestarMaterial)
                         .addGap(134, 134, 134)
@@ -163,8 +162,6 @@ public class Desafio2Frame extends javax.swing.JFrame {
                     .addComponent(contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        prestarMaterial.getAccessibleContext().setAccessibleName("Prestamos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -225,7 +222,8 @@ public class Desafio2Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_salirActionPerformed
 
     private void prestarMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prestarMaterialActionPerformed
-        // TODO add your handling code here:
+        PrestarDevolverMat opcionPrestar = new PrestarDevolverMat();
+        ShowOption(opcionPrestar);
     }//GEN-LAST:event_prestarMaterialActionPerformed
     
     private void ShowOption(JPanel p){

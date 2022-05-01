@@ -10,7 +10,7 @@ package PK_Modelos;
  * @author admin
  */
 public class ObjetoRevista {
-    public int Unid_disp, Fecha_publ,tipo;
+    public int  Fecha_publ,tipo;
     public String titulo, Editorial, Periodicidad; 
 
     public int getTipo() {
@@ -21,13 +21,6 @@ public class ObjetoRevista {
         this.tipo = tipo;
     }
 
-    public int getUnid_disp() {
-        return Unid_disp;
-    }
-
-    public void setUnid_disp(int Unid_disp) {
-        this.Unid_disp = Unid_disp;
-    }
 
     public String getTitulo() {
         return titulo;
@@ -63,7 +56,7 @@ public class ObjetoRevista {
 
     @Override
     public String toString() {
-        return "ObjetoRevista{" + "Unid_disp=" + Unid_disp + ", titulo=" + titulo + ", Editorial=" + Editorial + ", Periodicidad=" + Periodicidad + ", Fecha_publ=" + Fecha_publ + '}';
+        return "ObjetoRevista{" + "titulo=" + titulo + ", Editorial=" + Editorial + ", Periodicidad=" + Periodicidad + ", Fecha_publ=" + Fecha_publ + '}';
     }
     
 }

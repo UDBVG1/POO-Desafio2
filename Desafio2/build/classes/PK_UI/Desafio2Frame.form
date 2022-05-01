@@ -69,11 +69,11 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="modificarMaterial" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="listarDisponible" min="-2" max="-2" attributes="0"/>
+                          <Component id="buscarMaterial" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="borrarMaterial" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="buscarMaterial" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Component id="listarDisponible" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="prestarMaterial" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
@@ -150,11 +150,7 @@
         <Component class="javax.swing.JButton" name="prestarMaterial">
           <Properties>
             <Property name="text" type="java.lang.String" value="Prestamos"/>
-            <Property name="actionCommand" type="java.lang.String" value="Prestamos"/>
           </Properties>
-          <AccessibilityProperties>
-            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Prestamos"/>
-          </AccessibilityProperties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="prestarMaterialActionPerformed"/>
           </Events>

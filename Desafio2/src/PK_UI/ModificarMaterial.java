@@ -28,7 +28,7 @@ public String vp4="0";
     private void abrir_Plibro(){
         if(vp1.equals("0")){
         libro = new PK_UI.panelLibro();
-        jTabbedPane1.addTab("Agregar Libro", libro);
+        jTabbedPane1.addTab("Modificar Libro", libro);
         jTabbedPane1.setSelectedComponent(libro);
         }
         else{
@@ -41,7 +41,7 @@ public String vp4="0";
         
         if(vp2.equals("0")){
         revista = new PK_UI.panelRevista();
-        jTabbedPane1.addTab("Agregar Revista",revista );
+        jTabbedPane1.addTab("Modificar Revista",revista );
         jTabbedPane1.setSelectedComponent(revista);
         }
         else{
@@ -54,7 +54,7 @@ public String vp4="0";
         
         if(vp3.equals("0")){
         CD = new PK_UI.panelCd();
-        jTabbedPane1.addTab("Agregar un CD",CD );
+        jTabbedPane1.addTab("Modificar un CD",CD );
         jTabbedPane1.setSelectedComponent(CD);
         }
         else{
@@ -67,7 +67,7 @@ public String vp4="0";
         
         if(vp4.equals("0")){
         DVD = new PK_UI.panelDvd();
-        jTabbedPane1.addTab("Agregar un DVD",DVD );
+        jTabbedPane1.addTab("Modificar un DVD",DVD );
         jTabbedPane1.setSelectedComponent(DVD);
         }
         else{
