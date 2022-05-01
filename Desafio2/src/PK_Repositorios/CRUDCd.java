@@ -23,16 +23,20 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CRUDCd {
 
-    private int id = 0;
+    private int id=0;
+    private int cantDq=0;
+    int cantTD=0;
     private final String SQL_INSERTCDA = "insert into m_cd (titulo, artista,genero,duracion,canciones,idaudioVisual) values(?,?,?,?,?,?);";
     private final String SQL_SELECTCDA = "SELECT titulo, artista,genero,duracion,canciones from m_cd where titulo like ? or artista like ? or genero like ? or duracion like ?;";
     private final String SQL_SELECTRN = "select count(*) from material where codigo = ?;"; //buscar si no esta repetido el id
     private final String SQL_INSERTM = "insert into material (codigo,cantidad_total,cantidad_disponible,idm_cd) values(?,?,?,?);";//insertar a la tabla matrial para CD
-    private final String SQL_SELECTID = "SELECT titulo,artista,genero,duracion,canciones,l.idm_cd from m_cd l\n"
+    private final String SQL_SELECTID = "SELECT titulo,artista,genero,duracion,canciones,l.idm_cd,m.cantidad_total,m.cantidad_disponible from m_cd l\n"
                                         + "inner join material m ON l.idm_cd =m.idm_cd\n"
                                         + "where codigo= ?";
-    private final String SQL_UPDATEMCD = "update m_cd set titulo =?, artista =?, genero =? ,duracion =?, canciones =? where idm_cd =?;";
-
+    //private final String SQL_UPDATEMCD = "update m_cd set titulo =?, artista =?, genero =? ,duracion =?, canciones =? where idm_cd =?;";
+    private final String SQL_UPDATETCDs = "update m_cd set titulo =?, artista =?, genero =? ,duracion =?, canciones =? where idm_cd =?;";
+    private final String SQL_UPDATEMATERIAL = "update material  set cantidad_total =?, cantidad_disponible =? where codigo = ?;";
+    
     public int insertarDatos(ObjetoCd CD) {
         int rows = 0;
         int iddvd = 0;
@@ -138,7 +142,7 @@ public class CRUDCd {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        // ObjetoLibro materialLb;
+        // ObjetoCd materialLb;
         try {
             conn = ConeccionBD.getConexion();
             stmt = conn.prepareStatement(SQL_SELECTCDA);
@@ -192,6 +196,8 @@ public class CRUDCd {
                     cdMod.setDuracion(rs.getObject(4).toString());
                     cdMod.setNumCanciones(Integer.parseInt(rs.getObject(5).toString()));
                     id=(Integer.parseInt(rs.getObject(6).toString()));
+                    cantDq=(Integer.parseInt(rs.getObject(7).toString()));
+                    cantTD=(Integer.parseInt(rs.getObject(8).toString()));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -203,17 +209,21 @@ public class CRUDCd {
         return cdMod;
     }  
     
+        public int selectCant(){
+        return cantTD;
+    }
+    
     public int updateDatos(ObjetoCd CD) {
-    int rows = 0;
-    Connection conn = null;
-    PreparedStatement stmt = null;
+        int rows = 0;
+        Connection conn = null;
+        PreparedStatement stmt = null;
         try {
             conn = ConeccionBD.getConexion();
-            stmt = conn.prepareStatement(SQL_UPDATEMCD);
+            stmt = conn.prepareStatement(SQL_UPDATETCDs);
             int index = 1;
             System.out.println(CD.toString());
             
-         stmt.setString(index++, CD.titulo);
+            stmt.setString(index++, CD.titulo);
             stmt.setString(index++, CD.artista);
             stmt.setString(index++, CD.genero);
             stmt.setString(index++, CD.duracion);
@@ -234,4 +244,39 @@ public class CRUDCd {
         
         return rows;
     }
+    
+    public void updateMaterial(int cantT, String Cod){
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        if (cantT>cantTD) {
+            cantDq = (cantT-cantTD)+cantDq;
+        } else {
+            cantDq = cantDq-(cantTD-cantT);
+        }
+        int rows = 0;
+        try {
+            conn = ConeccionBD.getConexion();
+            stmt = conn.prepareStatement(SQL_UPDATEMATERIAL);
+            int index = 1;
+            stmt.setInt(index++, cantT);
+            stmt.setInt(index++, cantDq);
+            stmt.setString(index, Cod);
+
+        rows = stmt.executeUpdate();
+        
+        if (rows > 0) {
+                System.out.println("Registro exitoso de material" + "/n" + "Registros afectados" + rows);
+            }
+        else{
+            System.out.println("Registro NO exitoso del material!!");
+        }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConeccionBD.closeStatement(stmt);
+            ConeccionBD.closeConnection(conn);
+        }
+    }
 }
+
+

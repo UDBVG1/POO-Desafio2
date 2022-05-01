@@ -28,7 +28,7 @@ public class CRUDLibro {
     private final String SQL_INSERTLIRBOS = "insert into libros(Titulo, autor, num_pag,editorial, ISBN, idEscrito) values(?,?,?,?,?,?);";
     private final String SQL_SELECTLIBROS = "SELECT titulo,autor,num_pag,editorial,isbn from libros where titulo like ? or autor like ? or editorial like ? or isbn like ?;";
     private final String SQL_SELECTRN = "select count(*) from material where codigo = ?;"; //buscar si no esta repetido el id
-    private final String SQL_INSERTM = "insert into material (codigo,cantidad_total,cantidad_disponible,idlibros) values(?,?,?,?);";//insertar a la tabla matrial para libro
+    private final String SQL_INSERTM = "insert into material (codigo,cantidad_total,cantidad_disponible,idm_cd) values(?,?,?,?);";//insertar a la tabla matrial para libro
     private final String SQL_SELECTID = "SELECT titulo,autor,num_pag,editorial,isbn,l.idlibros,m.cantidad_total,m.cantidad_disponible from libros l\n" +
                                         "inner join material m ON l.idlibros =m.idlibros\n" +
                                         "where codigo= ?;";
