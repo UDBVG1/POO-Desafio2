@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Documentos/Student/POO/POO-Desafio2/Desafio2/src/PK_UI/AgregarMaterial.java</file>
             <file>file:/E:/Documentos/Student/POO/POO-Desafio2/Desafio2/src/PK_UI/ModificarMaterial.java</file>
-            <file>file:/E:/Documentos/Student/POO/POO-Desafio2/Desafio2/src/PK_UI/ListarMaterialDisponible.java</file>
-            <file>file:/E:/Documentos/Student/POO/POO-Desafio2/Desafio2/src/PK_UI/BuscarMaterial.java</file>
-            <file>file:/E:/Documentos/Student/POO/POO-Desafio2/Desafio2/src/PK_UI/Desafio2Frame.java</file>
-            <file>file:/E:/Documentos/Student/POO/POO-Desafio2/Desafio2/src/PK_UI/BorrarMaterial.java</file>
+            <file>file:/E:/Documentos/Student/POO/POO-Desafio2/Desafio2/src/PK_UI/PrestarDevolverMat.java</file>
+            <file>file:/E:/Documentos/Student/POO/POO-Desafio2/Desafio2/src/PK_Repositorios/CRUD.java</file>
+            <file>file:/E:/Documentos/Student/POO/POO-Desafio2/Desafio2/src/PK_UI/panelLibro.java</file>
         </group>
     </open-files>
 </project-private>

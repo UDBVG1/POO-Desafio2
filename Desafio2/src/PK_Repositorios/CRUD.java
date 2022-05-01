@@ -50,7 +50,7 @@ public class CRUD {
                                             "WHERE m.codigo= ?;";
     private final String SQL_SELECTSOCIO = "select (usuario) from socio where usuario = ?";//BUSCAR SI EL USUARIO EXISTE
     private final String SQL_INSERTPRESTAMO = "insert into prestamos (fechaprestamo,tipomov,idsocio,codigo) values(sysdate(),?,?,?) ;";//INSERTAR A LA TABLA PRESTAMO
-    private final String SQL_SELECTMATERIAL = "select (cantidad_disponible) from material where idlibros = ?;";//SELECCIONAR MATERIAL
+    private final String SQL_SELECTMATERIAL = "select cantidad_disponible from material where idlibros = ?;";//SELECCIONAR MATERIAL
     private final String SQL_UPDATEDIS = "update material set cantidad_disponible= ? where idlibros = ?;";
 
     private int id=0;
@@ -203,37 +203,38 @@ public class CRUD {
         PreparedStatement stmt = null;
         PreparedStatement stmt1 = null;
         ResultSet rs = null;
-        int cantDisNow = 0,cantUpdate = 0;
+        int cantDisNow ,cantUpdate;
         
         try {
             conn = ConeccionBD.getConexion();
             stmt = conn.prepareStatement(SQL_SELECTMATERIAL);
             stmt1 = conn.prepareStatement(SQL_UPDATEDIS);
             if(prestamo > 0){
-            stmt.setString(1,codigo);
-            rs = stmt.executeQuery();
-            cantDisNow = rs.getInt(3);
-            
-            cantUpdate = cantDisNow - prestamo;
-            stmt1.setInt(1, cantUpdate);
-            stmt1.setString(2,codigo);
-            System.out.println("Material fue prestado exitosamente");
+                stmt.setString(1,codigo);
+                rs = stmt.executeQuery();
+                cantDisNow = rs.getInt(1);
+
+                cantUpdate = cantDisNow - prestamo;
+                stmt1.setInt(1, cantUpdate);
+                stmt1.setString(2,codigo);
+                System.out.println("Material fue prestado exitosamente");
             }else{
-            stmt.setString(1,codigo);
-            rs = stmt.executeQuery();
-            cantDisNow = rs.getInt(3);
-            
-            cantUpdate = cantDisNow + devolucion;
-            stmt1.setInt(1, cantUpdate);
-            stmt1.setString(2,codigo);
-            System.out.println("Material fue devuelto exitosamente");
+                stmt.setString(1,codigo);
+                rs = stmt.executeQuery();
+                cantDisNow = rs.getInt(1);
+
+                cantUpdate = cantDisNow + devolucion;
+                stmt1.setInt(1, cantUpdate);
+                stmt1.setString(2,codigo);
+                System.out.println("Material fue devuelto exitosamente");
             }
             
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            ConeccionBD.closeStatement(stmt);
             ConeccionBD.closeConnection(conn);
+            ConeccionBD.closeStatement(stmt);
+            ConeccionBD.closeResulset(rs);
         }
     }
     
@@ -247,19 +248,19 @@ public class CRUD {
             stmt = conn.prepareStatement(SQL_INSERTPRESTAMO);
             
             if(Resolucion){ 
-            int index = 1;
-            
-            stmt.setString(index++, tipomov);
-            stmt.setString(index++, idsocio);
-            stmt.setString(index, codigo);
+                int index = 1;
 
-            rows = stmt.executeUpdate();
-            System.out.println("Registro exitoso Usuario valido" + "/n" + "Registros afectados" + rows);
+                stmt.setString(index++, tipomov);
+                stmt.setString(index++, idsocio);
+                stmt.setString(index, codigo);
+
+                rows = stmt.executeUpdate();
+                System.out.println("Registro exitoso Usuario valido" + "/n" + "Registros afectados" + rows);
             
-             }else{
-            JOptionPane.showMessageDialog(null, "Error al guardar datos, Usuario no existente", "Error", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(null, "Error al guardar datos, Usuario no existente", "Error", JOptionPane.INFORMATION_MESSAGE);
             }
-            }catch (SQLException e) {
+        }catch (SQLException e) {
             e.printStackTrace();
         } finally {
             ConeccionBD.closeStatement(stmt);

@@ -13,13 +13,13 @@ import PK_Repositorios.CRUD;
  */
 public class PrestarDevolverMat extends javax.swing.JPanel {
     private final CRUD PrestandDevol;
-
+    
     /**
      * Creates new form panelPrestamo
      */
     public PrestarDevolverMat() {
         initComponents();
-    PrestandDevol = new CRUD();
+        PrestandDevol = new CRUD();
     }
 
     /**
@@ -144,26 +144,24 @@ public class PrestarDevolverMat extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void hacerCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hacerCambiosActionPerformed
-          int prestamo, devolucion ;
-          String codigo, tipo,idsocio;
-          boolean Busuario = false;
-          if(Prestamo.isSelected()==true)
-            {
-             tipo = "prest";
-             
-            }
-          else{
-             tipo = "devol"; 
-             
-          }
-          prestamo = Integer.parseInt(cantPrestamo.getText());
-          devolucion = Integer.parseInt(cantDevolucion.getText());
-          codigo = CodeMaterial.getText();
-          idsocio = usuario.getText();
-          
+          String tipo1;
+          boolean Busuario;
+        if(Prestamo.isSelected())
+        {
+            tipo1 = "prest";
+        }
+        else{
+            tipo1 = "devol";           
+        }
+        tipo1="test";
+          int prestamo = Integer.parseInt(cantPrestamo.getText());
+          int devolucion = Integer.parseInt(cantDevolucion.getText());
+          String codigo = CodeMaterial.getText();
+          String idsocio = usuario.getText();
+          System.out.println(idsocio);
           Busuario = PrestandDevol.usuario(idsocio);
-          System.out.println(Busuario);
-          PrestandDevol.Prestamo(Busuario, tipo, idsocio, idsocio);
+//          System.out.println(Busuario);
+          PrestandDevol.Prestamo(Busuario, tipo1, idsocio, codigo);
           
           PrestandDevol.ModificarDisponibilidad(prestamo, devolucion, codigo);
     }//GEN-LAST:event_hacerCambiosActionPerformed
