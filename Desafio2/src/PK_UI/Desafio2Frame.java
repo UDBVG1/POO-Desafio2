@@ -56,7 +56,7 @@ public class Desafio2Frame extends javax.swing.JFrame {
 
         titulo.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo.setText("MEDIATECA");
+        titulo.setText("BIBLIOTECA");
 
         agregarMaterial.setText("Agregar Material");
         agregarMaterial.addActionListener(new java.awt.event.ActionListener() {
