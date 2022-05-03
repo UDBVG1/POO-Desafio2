@@ -50,6 +50,16 @@ public class Desafio2Frame extends javax.swing.JFrame {
         salir = new javax.swing.JButton();
         prestarMaterial = new javax.swing.JButton();
         contenedor = new javax.swing.JPanel();
+        principal1 = new javax.swing.JPanel();
+        titulo1 = new javax.swing.JLabel();
+        agregarMaterial1 = new javax.swing.JButton();
+        modificarMaterial1 = new javax.swing.JButton();
+        listarDisponible1 = new javax.swing.JButton();
+        borrarMaterial1 = new javax.swing.JButton();
+        buscarMaterial1 = new javax.swing.JButton();
+        salir1 = new javax.swing.JButton();
+        prestarMaterial1 = new javax.swing.JButton();
+        contenedor1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -167,15 +177,136 @@ public class Desafio2Frame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        titulo1.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        titulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo1.setText("MEDIATECA");
+
+        agregarMaterial1.setText("Agregar Material");
+        agregarMaterial1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarMaterial1ActionPerformed(evt);
+            }
+        });
+
+        modificarMaterial1.setText("Modificar Material");
+        modificarMaterial1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarMaterial1ActionPerformed(evt);
+            }
+        });
+
+        listarDisponible1.setText("Listar Disponible");
+        listarDisponible1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarDisponible1ActionPerformed(evt);
+            }
+        });
+
+        borrarMaterial1.setText("Borrar Material");
+        borrarMaterial1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                borrarMaterial1ActionPerformed(evt);
+            }
+        });
+
+        buscarMaterial1.setText("Buscar Material");
+        buscarMaterial1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarMaterial1ActionPerformed(evt);
+            }
+        });
+
+        salir1.setBackground(java.awt.Color.red);
+        salir1.setText("Salir");
+        salir1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salir1ActionPerformed(evt);
+            }
+        });
+
+        prestarMaterial1.setText("Prestamos");
+        prestarMaterial1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prestarMaterial1ActionPerformed(evt);
+            }
+        });
+
+        contenedor1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        contenedor1.setMaximumSize(new java.awt.Dimension(0, 0));
+
+        javax.swing.GroupLayout contenedor1Layout = new javax.swing.GroupLayout(contenedor1);
+        contenedor1.setLayout(contenedor1Layout);
+        contenedor1Layout.setHorizontalGroup(
+            contenedor1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 440, Short.MAX_VALUE)
+        );
+        contenedor1Layout.setVerticalGroup(
+            contenedor1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 450, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout principal1Layout = new javax.swing.GroupLayout(principal1);
+        principal1.setLayout(principal1Layout);
+        principal1Layout.setHorizontalGroup(
+            principal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(principal1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(principal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(salir1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buscarMaterial1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(borrarMaterial1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(listarDisponible1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(modificarMaterial1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(agregarMaterial1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(titulo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(prestarMaterial1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(contenedor1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        principal1Layout.setVerticalGroup(
+            principal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(principal1Layout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addGroup(principal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(principal1Layout.createSequentialGroup()
+                        .addComponent(titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
+                        .addComponent(agregarMaterial1)
+                        .addGap(18, 18, 18)
+                        .addComponent(modificarMaterial1)
+                        .addGap(18, 18, 18)
+                        .addComponent(buscarMaterial1)
+                        .addGap(18, 18, 18)
+                        .addComponent(borrarMaterial1)
+                        .addGap(18, 18, 18)
+                        .addComponent(listarDisponible1)
+                        .addGap(18, 18, 18)
+                        .addComponent(prestarMaterial1)
+                        .addGap(134, 134, 134)
+                        .addComponent(salir1))
+                    .addComponent(contenedor1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 40, Short.MAX_VALUE)
+                .addComponent(principal, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 40, Short.MAX_VALUE)
+                .addComponent(principal1, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 32, Short.MAX_VALUE)
+                .addComponent(principal, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 32, Short.MAX_VALUE)
+                .addComponent(principal1, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -229,6 +360,34 @@ public class Desafio2Frame extends javax.swing.JFrame {
         PrestarDevolverMat opcionPrestar = new PrestarDevolverMat();
         ShowOption(opcionPrestar);
     }//GEN-LAST:event_prestarMaterialActionPerformed
+
+    private void agregarMaterial1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarMaterial1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_agregarMaterial1ActionPerformed
+
+    private void modificarMaterial1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarMaterial1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modificarMaterial1ActionPerformed
+
+    private void listarDisponible1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarDisponible1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listarDisponible1ActionPerformed
+
+    private void borrarMaterial1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarMaterial1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_borrarMaterial1ActionPerformed
+
+    private void buscarMaterial1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarMaterial1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarMaterial1ActionPerformed
+
+    private void salir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salir1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_salir1ActionPerformed
+
+    private void prestarMaterial1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prestarMaterial1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_prestarMaterial1ActionPerformed
     
     private void ShowOption(JPanel p){
         p.setSize(440, 450);
@@ -286,15 +445,25 @@ public class Desafio2Frame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregarMaterial;
+    private javax.swing.JButton agregarMaterial1;
     private javax.swing.JButton borrarMaterial;
+    private javax.swing.JButton borrarMaterial1;
     private javax.swing.JButton buscarMaterial;
+    private javax.swing.JButton buscarMaterial1;
     private javax.swing.JPanel contenedor;
+    private javax.swing.JPanel contenedor1;
     private javax.swing.JButton listarDisponible;
+    private javax.swing.JButton listarDisponible1;
     private javax.swing.JButton modificarMaterial;
+    private javax.swing.JButton modificarMaterial1;
     private javax.swing.JButton prestarMaterial;
+    private javax.swing.JButton prestarMaterial1;
     private javax.swing.JPanel principal;
+    private javax.swing.JPanel principal1;
     private javax.swing.JButton salir;
+    private javax.swing.JButton salir1;
     private javax.swing.JLabel titulo;
+    private javax.swing.JLabel titulo1;
     // End of variables declaration//GEN-END:variables
 
 }
