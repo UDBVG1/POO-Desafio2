@@ -161,8 +161,9 @@ public class Desafio2Frame extends javax.swing.JFrame {
                         .addComponent(listarDisponible)
                         .addGap(18, 18, 18)
                         .addComponent(prestarMaterial)
-                        .addGap(134, 134, 134)
-                        .addComponent(salir))
+                        .addGap(76, 76, 76)
+                        .addComponent(salir)
+                        .addGap(58, 58, 58))
                     .addComponent(contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

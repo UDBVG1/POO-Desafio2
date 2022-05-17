@@ -168,9 +168,9 @@ public class PrestarDevolverMat extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void hacerCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hacerCambiosActionPerformed
-  
+
           int prestamo=0, devolucion=0 ;
-          String codigo, tipo1="" ,usSocio;
+          String codigo, tipo1="" ,usSocio, estado;
           boolean Busuario = false;
           if(Prestamo.isSelected()==true)
             {
@@ -184,6 +184,7 @@ public class PrestarDevolverMat extends javax.swing.JPanel {
           
           codigo = CodeMaterial.getText();
           usSocio = usuario.getText();
+          estado = "";
 
           Busuario = PrestandDevol.usuario(usSocio);
           int idSocio = PrestandDevol.RidSocio();
@@ -192,9 +193,9 @@ public class PrestarDevolverMat extends javax.swing.JPanel {
           int CantNow = PrestandDevol.SELECTDisponibilidad(codigo);
           System.out.println(CantNow);
           
-          PrestandDevol.UPDATEDisponibilidad(CantNow, prestamo, devolucion, codigo);
+          PrestandDevol.UPDATEDisponibilidad(CantNow, prestamo, devolucion, codigo, estado);
           
-          PrestandDevol.TablaPrestamo(Busuario, tipo1, idSocio, codigo);
+          PrestandDevol.TablaPrestamo(Busuario, tipo1, idSocio, codigo, estado);
           
     }//GEN-LAST:event_hacerCambiosActionPerformed
 

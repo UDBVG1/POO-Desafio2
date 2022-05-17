@@ -49,7 +49,7 @@ public class CRUD {
                                             "LEFT join m_cd mc on m.idm_cd=mc.idm_cd LEFT join m_dvd md on m.idm_dvd=md.idm_dvd " +
                                             "WHERE m.codigo= ?;";
     private final String SQL_SELECTSOCIO = "select idsocio from socio where usuario = ?;";//BUSCAR SI EL USUARIO EXISTE
-    private final String SQL_INSERTPRESTAMO = "insert into prestamos (fechaprestamo,tipomov,idsocio,codigo) values(sysdate(),?,?,?) ;";//INSERTAR A LA TABLA PRESTAMO
+    private final String SQL_INSERTPRESTAMO = "insert into prestamos (fechaprestamo,tipomov,idsocio,codigo,estado) values(sysdate(),?,?,?,?) ;";//INSERTAR A LA TABLA PRESTAMO
     private final String SQL_SELECTMATERIAL = "select cantidad_disponible from material where codigo = ?;";//SELECCIONAR MATERIAL
     private final String SQL_UPDATEDIS = "update material set cantidad_disponible= ? where codigo = ?;";
 
@@ -237,7 +237,7 @@ public class CRUD {
         return cantDisNow;
     }
     
-    public void UPDATEDisponibilidad(int cantDisNow,int prestamo, int devolucion, String codigo){
+    public void UPDATEDisponibilidad(int cantDisNow,int prestamo, int devolucion, String codigo, String estado){
         int rows = 0;
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -248,12 +248,12 @@ public class CRUD {
             stmt = conn.prepareStatement(SQL_UPDATEDIS);
             if(prestamo > 0){           
             cantUpdate = cantDisNow - prestamo;
-
+            estado = "A"; //Prestamo abierto
             }else{ 
             cantUpdate = cantDisNow + devolucion;
-
+            estado = "C"; //Prestamo cerrado
             }
-            
+            //Evita ambiguedad, luego sera añadido a las consultas
         stmt.setInt(index++, cantUpdate);
         stmt.setString(index,codigo);
         rows = stmt.executeUpdate();    
@@ -269,7 +269,7 @@ public class CRUD {
         }
     }
     
-    public void TablaPrestamo(boolean Resolucion,String tipomov,int idsocio,String codigo){
+    public void TablaPrestamo(boolean Resolucion,String tipomov,int idsocio,String codigo, String estado){
         Connection conn = null;
         PreparedStatement stmt = null;
         String idLibro = "";
